@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SurveyAnswererApp.Views.QuestionnairePage">
+  <ContentPage.Content>
+    <StackLayout>
+      <ContentView x:Name="QnTitleBarView" 
+                   BackgroundColor="Accent">
+        <AbsoluteLayout>
+          <Button Text="Close"
+                  x:Name="ExitSurvey"
+                  Clicked="ExitSurveyButton_OnClicked"
+                  AbsoluteLayout.LayoutFlags="PositionProportional"
+                  AbsoluteLayout.LayoutBounds="1.0,0.0,AutoSize,AutoSize"
+                  BackgroundColor="Yellow"
+                  >
+            <!--TODO Make this a X symbol-->
+          </Button>
+        </AbsoluteLayout>
+      </ContentView>
+      <StackLayout VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="CenterAndExpand">
+        <Label Text="(ContentPage) QuestionnairePage"
+               LineBreakMode="WordWrap"
+               HorizontalOptions="CenterAndExpand" />
+        <Editor IsEnabled="False"
+                HorizontalOptions="CenterAndExpand">
+          <Editor.Text>
+            Survey Questions go here!
+          </Editor.Text>
+        </Editor>
+      </StackLayout>
+      <StackLayout Orientation="Horizontal"
+                   VerticalOptions="End">
+        <Button Text="Back"
+                HorizontalOptions="StartAndExpand"
+                x:Name="BackButton"
+                Clicked="BackButton_OnClicked" />
+        <Label Text="{Binding CurrentPage}"
+               HorizontalOptions="Center"
+               x:Name="CurrentPageLabel" />
+        <Button Text="Next"
+                HorizontalOptions="EndAndExpand"
+                x:Name="NextButton"
+                Clicked="NextButton_OnClicked" />
+      </StackLayout>
+      <Button HorizontalOptions="CenterAndExpand"
+              Text="Done"
+              x:Name="DoneSurveyButton"
+              Clicked="DoneSurveyButton_OnClicked" />
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
