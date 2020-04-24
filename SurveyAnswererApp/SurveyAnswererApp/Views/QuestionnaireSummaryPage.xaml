@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SurveyAnswererApp.Views.QuestionnaireSummaryPage">
+  <ContentPage.Content>
+    <StackLayout>
+      <BoxView VerticalOptions="StartAndExpand" />
+      <Label Text="(ContentPage) QuestionnaireSummaryPage"
+             VerticalOptions="Center"
+             HorizontalOptions="CenterAndExpand" />
+      <Label Text="This is the summary of the survey answers you selected and will be sent to the server."
+             VerticalOptions="Center"
+             HorizontalOptions="CenterAndExpand" />
+      <Label Text="Further text is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+             VerticalOptions="Center"
+             HorizontalOptions="CenterAndExpand" />
+      <BoxView VerticalOptions="EndAndExpand" />
+      <Button Text="Send" x:Name="SendSurveyButton" Clicked="SendSurveyButton_OnClicked" />
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>
