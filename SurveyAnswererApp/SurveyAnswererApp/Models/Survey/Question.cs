@@ -5,6 +5,10 @@ namespace SurveyAnswererApp.Models.Survey {
     public long Nr { get; set; }
     public QuestionType QuestionType { get; set; }
     public string QuestionText { get; set; }
-    public List<Answer> Answers { get; private set; }
+    public List<Answer> Answers { get; set; }
+
+    public Question() {
+      Answers = new List<Answer>();
+    }
   }
 }
