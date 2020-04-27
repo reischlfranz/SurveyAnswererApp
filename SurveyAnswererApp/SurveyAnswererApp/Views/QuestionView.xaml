@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SurveyAnswererApp.Views.QuestionView">
+  <ContentView.Content>
+    <StackLayout HorizontalOptions="CenterAndExpand">
+      <Label x:Name="QuestionTextLabel"
+             Text="{Binding .}"
+             />
+      <ListView x:Name="AnswerListView"
+                ItemsSource="{Binding .}">
+        <ListView.Header>
+          <Label Text="ListView.Header"></Label>
+        </ListView.Header>
+        <ListView.Footer>
+          <Label Text="ListView.Footer"></Label>
+        </ListView.Footer>
+        
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <Frame>
+              <Label Text="Answer comes here">
+                <!-- TODO Answer display according to type  -->
+              </Label>
+            </Frame>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <Label Text="Hello, world!"
+             VerticalOptions="CenterAndExpand"
+             HorizontalOptions="CenterAndExpand" />
+    </StackLayout>
+  </ContentView.Content>
+</ContentView>
+
