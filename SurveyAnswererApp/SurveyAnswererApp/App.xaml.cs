@@ -11,15 +11,10 @@ namespace SurveyAnswererApp
     private static App _instance;
     public static App Instance
     {
-      get
-      {
-        if (_instance == null)
-        {
-          _instance = new App();
-        }
-        return _instance;
-      }
+      get { return _instance ?? (_instance = new App()); }
     }
+    
+    
     public App()
     {
       if(_instance != null) return;
