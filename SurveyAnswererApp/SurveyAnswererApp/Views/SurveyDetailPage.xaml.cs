@@ -11,17 +11,13 @@ using Xamarin.Forms.Xaml;
 namespace SurveyAnswererApp.Views
 {
   [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class SurveyDetailPage : ContentPage
-  {
+  public partial class SurveyDetailPage : ContentPage {
+    
     public SurveyDetailPage(Questionnaire questionnaire)
     {
-      BindingContext = new SurveyDetailViewModel(){Questionnaire = questionnaire};
+      BindingContext = new SurveyDetailViewModel(questionnaire);
       InitializeComponent();
     }
 
-    private void TakeSurveyButton_OnClicked(object sender, EventArgs e)
-    {
-      App.Instance.MainPage = new NavigationPage(new QuestionnairePage());
-    }
   }
 }

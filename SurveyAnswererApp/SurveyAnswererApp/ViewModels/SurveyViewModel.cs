@@ -11,19 +11,8 @@ namespace SurveyAnswererApp.ViewModels {
       set => App.Instance.Model.CurrentQuestionnaire = value ?? throw new ArgumentNullException(); 
     }
 
-    // Note: Assigning (empty) not-null string during declaration prevents
-    // App from crashing!
     public string SurveyTitle { get; set; }
     public string SurveyDescription { get; set; }
-
-    public SurveyViewModel() {
-      // Get a dummy item for now
-      Questionnaire = DummySurveyFactory.GetSurvey();
-      RaiseAllPropertiesChanged();
-
-      SurveyTitle = Questionnaire.Title;
-      SurveyDescription = Questionnaire.Description;
-    }
 
     public SurveyViewModel(Questionnaire questionnaire) {
       Questionnaire = questionnaire;

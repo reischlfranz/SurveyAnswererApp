@@ -11,10 +11,6 @@
              xmlns:sv="clr-namespace:SurveyAnswererApp.Models.Survey;assembly=SurveyAnswererApp"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.QuestionnairePage">
-  <ContentPage.BindingContext>
-    <vm:SurveyViewModel />
-  </ContentPage.BindingContext>
-
   <ContentPage.Content>
     <StackLayout>
 

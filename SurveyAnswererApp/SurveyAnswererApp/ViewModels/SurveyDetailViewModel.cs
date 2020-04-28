@@ -15,16 +15,14 @@ namespace SurveyAnswererApp.ViewModels
 
     public ICommand OpenSurveyCommand { get; set; }
 
-    public SurveyDetailViewModel()
-    {
+    public SurveyDetailViewModel(Questionnaire questionnaire) {
+      Questionnaire = questionnaire;
       OpenSurveyCommand = new Command((e) => ExecuteOpenSurveyCommand(e, EventArgs.Empty));
     }
 
     private void ExecuteOpenSurveyCommand(object sender, EventArgs args)
     {
-      //throw new NotImplementedException();
-      App.Instance.MainPage = new NavigationPage(new QuestionnairePage());
-
+      App.Instance.MainPage = new NavigationPage(new QuestionnairePage(Questionnaire));
     }
   }
 }

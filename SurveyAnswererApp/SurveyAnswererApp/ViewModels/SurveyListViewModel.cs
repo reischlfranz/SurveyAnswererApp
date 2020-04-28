@@ -14,13 +14,9 @@ namespace SurveyAnswererApp.ViewModels
   {
     public ObservableCollection<Questionnaire> Surveys { get; set; } =new ObservableCollection<Questionnaire>();
 
-    public ICommand OpenSurveyCommand { get; set; }
-
     public SurveyListViewModel()
     {
       PopulateSurveyList();
-      OpenSurveyCommand = new Command(
-        (e) => OpenQuestionnaireForAnswering(e, EventArgs.Empty));
     }
 
     private void PopulateSurveyList()
@@ -39,13 +35,6 @@ namespace SurveyAnswererApp.ViewModels
       Surveys.Add(DummySurveyFactory.GetSurvey());
 
       // TODO Raise property changed?
-    }
-
-
-    private void OpenQuestionnaireForAnswering(object sender, EventArgs args)
-    {
-      throw new NotImplementedException();
-      App.Instance.MainPage = new QuestionnairePage();
     }
 
   }
