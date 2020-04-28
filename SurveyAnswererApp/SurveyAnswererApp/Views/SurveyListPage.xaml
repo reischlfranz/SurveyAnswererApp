@@ -4,31 +4,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:SurveyAnswererApp.ViewModels"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.SurveyListPage"
              Title="Surveys">
+
+  <ContentPage.BindingContext>
+    <vm:SurveyListViewModel />
+  </ContentPage.BindingContext>
+
   <StackLayout>
     <Label VerticalOptions="Start">SurveyListPage</Label>
     <ListView x:Name="MyListView"
-              ItemsSource="{Binding Items}"
               ItemTapped="Handle_ItemTapped"
-              CachingStrategy="RecycleElement">
-      <d:ListView.ItemsSource>
-        <x:Array Type="{x:Type x:String}">
-          <x:String>Item 1</x:String>
-          <x:String>Item 2</x:String>
-          <x:String>Item 3</x:String>
-          <x:String>Item 4</x:String>
-          <x:String>Item 5</x:String>
-        </x:Array>
-      </d:ListView.ItemsSource>
+              CachingStrategy="RecycleElement" 
+              ItemsSource="{Binding Surveys}"
+              >
       <!--Built in Cells-->
       <ListView.ItemTemplate>
         <DataTemplate>
           <!--<TapGestureRecognizer Command="{Binding .}">-->
-            <!--<TapGestureRecognizer.LogicalChildren>-->
-              <TextCell Text="{Binding .}" d:Text="{Binding .}" />
-            <!--</TapGestureRecognizer.LogicalChildren>-->
+          <!--<TapGestureRecognizer.LogicalChildren>-->
+          <ViewCell>
+            <Label Text="{Binding .Title}" />
+            <!-- TODO Raise property Changed to show correct entries -->
+          </ViewCell>
+          <!--</TapGestureRecognizer.LogicalChildren>-->
           <!--</TapGestureRecognizer>-->
         </DataTemplate>
       </ListView.ItemTemplate>
