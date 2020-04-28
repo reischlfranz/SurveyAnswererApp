@@ -1,0 +1,31 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SurveyAnswererApp.Views.AnswerYesNoView">
+  <ContentView.Content>
+    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="CenterAndExpand">
+      <Label Text="{Binding AnswerText}"
+             HorizontalOptions="StartAndExpand"
+             />
+      <StackLayout Orientation="Horizontal">
+        <Label Text="Yes"
+               x:Name="yesButton" 
+               VerticalOptions="Center"/>
+        <CheckBox IsEnabled="True"
+                  IsChecked="False" 
+                  VerticalOptions="Center"/>
+        <Label Text="No"
+               x:Name="noButton"
+               VerticalOptions="Center"/>
+        <CheckBox IsEnabled="True"
+                  IsChecked="False" 
+                  VerticalOptions="Center"/>
+      </StackLayout>
+    </StackLayout>
+  </ContentView.Content>
+</ContentView>

@@ -1,4 +1,5 @@
 ﻿using System;
+using SurveyAnswererApp.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SurveyAnswererApp.Services;
@@ -13,6 +14,8 @@ namespace SurveyAnswererApp
     {
       get { return _instance ?? (_instance = new App()); }
     }
+
+    public Model Model{ get; set; }
     
     
     public App()
@@ -20,6 +23,8 @@ namespace SurveyAnswererApp
       if(_instance != null) return;
       InitializeComponent();
 
+      Model = new Model();
+      
       DependencyService.Register<MockDataStore>();
       MainPage = new NavigationPage(new MainTabNavPage());
       _instance = this;

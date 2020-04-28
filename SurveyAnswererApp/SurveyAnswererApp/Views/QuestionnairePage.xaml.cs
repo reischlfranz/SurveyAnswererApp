@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using SurveyAnswererApp.Models.Survey;
+using SurveyAnswererApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -14,8 +15,9 @@ namespace SurveyAnswererApp.Views
   {
     public int CurrentPage { get; set; }
 
-    public QuestionnairePage()
-    {
+   
+    public QuestionnairePage(Questionnaire questionnaire) {
+      this.BindingContext = new SurveyViewModel(questionnaire);
       InitializeComponent();
       CurrentPage = 1;
       CurrentPageLabel.Text = CurrentPage.ToString();
@@ -58,7 +60,7 @@ namespace SurveyAnswererApp.Views
 
       if (doSend)
       {
-        Navigation.PushAsync(new QuestionnaireSummaryPage());
+        await Navigation.PushAsync(new QuestionnaireSummaryPage());
         return;
       }
     }

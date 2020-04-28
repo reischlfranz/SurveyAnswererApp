@@ -1,0 +1,52 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:q="http://dont.com/mpt"
+             mc:Ignorable="d q"
+             xmlns:view="clr-namespace:SurveyAnswererApp.Views"
+             xmlns:vm="clr-namespace:SurveyAnswererApp.ViewModels"
+             x:Class="SurveyAnswererApp.Views.QuestionView">
+
+  <!--<ContentView.BindingContext>
+    <vm:QuestionViewModel />
+  </ContentView.BindingContext>-->
+
+  <ContentView.Content>
+    <StackLayout HorizontalOptions="FillAndExpand"
+                 x:Name="QuestionListEntry"
+                 BackgroundColor="Aquamarine"
+                 >
+
+      <Label x:Name="QuestionTextLabel"
+             d:Text="{Binding QuestionText}" />
+      <Label Text="Select your answer(s):" />
+      <StackLayout VerticalOptions="CenterAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   BindableLayout.ItemsSource="{Binding Answers}"
+                   x:Name="AnswerDataLayout"
+                   >
+        <BindableLayout.ItemTemplate>
+          <DataTemplate x:Name="DataTemplateX">
+            <StackLayout HorizontalOptions="FillAndExpand">
+              <!--<Label Text="New Answer:" />-->
+              <ContentView x:Name="TestAnswerViewCell"
+                           BackgroundColor="OrangeRed" 
+                           HorizontalOptions="FillAndExpand"
+              />
+              <view:AnswerYesNoView HorizontalOptions="CenterAndExpand" />
+              <view:AnswerMultipleChoiceView HorizontalOptions="CenterAndExpand" />
+              <view:AnswerRatingView HorizontalOptions="FillAndExpand" />
+              <view:AnswerTextEntryView HorizontalOptions="FillAndExpand" />
+
+            </StackLayout>
+            </DataTemplate>
+          </BindableLayout.ItemTemplate>
+        </StackLayout>
+
+      
+    </StackLayout>
+  </ContentView.Content>
+</ContentView>

@@ -8,16 +8,23 @@ using SurveyAnswererApp.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace SurveyAnswererApp.Views
-{
+namespace SurveyAnswererApp.Views {
   [XamlCompilation(XamlCompilationOptions.Compile)]
-  public partial class SurveyDetailPage : ContentPage {
-    
-    public SurveyDetailPage(Questionnaire questionnaire)
-    {
-      BindingContext = new SurveyDetailViewModel(questionnaire);
+  public partial class AnswerFactoryView : ContentView {
+    public AnswerFactoryView() {
+      try {
+        Question c = new Question();
+        
+        
+        
+        Console.Out.WriteLine("");
+      }
+      catch (Exception e) {
+        Console.WriteLine(e);
+        throw;
+      }
       InitializeComponent();
     }
-
   }
 }
+

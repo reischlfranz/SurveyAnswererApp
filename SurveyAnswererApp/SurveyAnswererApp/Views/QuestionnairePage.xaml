@@ -1,14 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:view="clr-namespace:SurveyAnswererApp.Views;assembly=SurveyAnswererApp"
+             xmlns:vm="clr-namespace:SurveyAnswererApp.ViewModels;assembly=SurveyAnswererApp"
+             xmlns:local="clr-namespace:SurveyAnswererApp"
+             xmlns:sv="clr-namespace:SurveyAnswererApp.Models.Survey;assembly=SurveyAnswererApp"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.QuestionnairePage">
   <ContentPage.Content>
     <StackLayout>
-      <ContentView x:Name="QnTitleBarView" 
+
+      <!-- Title bar -->
+      <ContentView x:Name="QnTitleBarView"
                    BackgroundColor="Accent">
         <AbsoluteLayout>
           <Button Text="Close"
@@ -16,24 +23,70 @@
                   Clicked="ExitSurveyButton_OnClicked"
                   AbsoluteLayout.LayoutFlags="PositionProportional"
                   AbsoluteLayout.LayoutBounds="1.0,0.0,AutoSize,AutoSize"
-                  BackgroundColor="Yellow"
-                  >
+                  BackgroundColor="Yellow">
             <!--TODO Make this a X symbol-->
           </Button>
         </AbsoluteLayout>
       </ContentView>
-      <StackLayout VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand">
-        <Label Text="(ContentPage) QuestionnairePage"
-               LineBreakMode="WordWrap"
-               HorizontalOptions="CenterAndExpand" />
-        <Editor IsEnabled="False"
-                HorizontalOptions="CenterAndExpand">
-          <Editor.Text>
-            Survey Questions go here!
-          </Editor.Text>
-        </Editor>
-      </StackLayout>
+
+      <Label Text="(ContentPage) QuestionnairePage"
+             LineBreakMode="WordWrap"
+             HorizontalOptions="CenterAndExpand" />
+      <!-- <Editor IsEnabled="False" -->
+      <!--         HorizontalOptions="CenterAndExpand"> -->
+      <!--   <Editor.Text> -->
+      <!--     Survey Questions go here! -->
+      <!--   </Editor.Text> -->
+      <!-- </Editor> -->
+
+      <!-- Questionnaire content -->
+      <RefreshView>
+        <ScrollView>
+          
+          <!-- <ListView VerticalOptions="CenterAndExpand" -->
+          <!--              HorizontalOptions="CenterAndExpand" -->
+          <!--              ItemsSource="{Binding Questionnaire.Questions}" -->
+          <!--              BackgroundColor="Aqua"> -->
+          <!--   <ListView.ItemTemplate> -->
+          <!--     <DataTemplate x:Name="itemData"> -->
+          <!--       <StackLayout> -->
+          <!--         <Label Text="New Question" /> -->
+          <!--         ~1~ <Label Text="{Binding QuestionText}" /> @1@ -->
+          <!--         <view:QuestionView Question="{Binding .}" x:Name="QuestionViewUserControl"  /> -->
+          <!--       </StackLayout> -->
+          <!--     </DataTemplate> -->
+          <!-- -->
+          <!--   </ListView.ItemTemplate> -->
+          <!-- -->
+          <!-- </ListView> -->
+          <!-- -->
+          <StackLayout VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand"
+                       BindableLayout.ItemsSource="{Binding Questionnaire.Questions}"
+                       BackgroundColor="Aqua">
+            <BindableLayout.ItemTemplate>
+              <DataTemplate>
+                
+                <StackLayout>
+                  <Label Text="New Question" />
+                  <!-- <view:QuestionView QuestionId="{Binding Nr}" -->
+                  <!--                    x:Name="QuestionViewUserControl" /> -->
+                  <Label Text="{Binding Nr}" />
+                  <Label Text="{Binding QuestionText}" />
+                  <!-- <view:QuestionView QuestionId="215" -->
+                  <!--                    x:Name="QuestionViewUserControl"  /> -->
+                  <view:QuestionView />
+                </StackLayout>
+              </DataTemplate>
+          
+            </BindableLayout.ItemTemplate>
+          
+          </StackLayout>
+        </ScrollView>
+      </RefreshView>
+
+
+      <!-- Navigation -->
       <StackLayout Orientation="Horizontal"
                    VerticalOptions="End">
         <Button Text="Back"

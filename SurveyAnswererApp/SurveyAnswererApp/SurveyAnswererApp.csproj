@@ -16,6 +16,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\AnswerTextEntryView.xaml.cs">
+      <DependentUpon>AnswerTextEntryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AnswerRatingView.xaml.cs">
+      <DependentUpon>AnswerRatingView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\HistoryListPage.xaml.cs">
       <DependentUpon>HistoryListPage.xaml</DependentUpon>
     </Compile>
@@ -31,9 +37,27 @@
     <Compile Update="Views\SurveyListPage.xaml.cs">
       <DependentUpon>SurveyListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\QuestionView.xaml.cs">
+      <DependentUpon>QuestionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AnswerMultipleChoiceView.xaml.cs">
+      <DependentUpon>AnswerMultipleChoiceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AnswerYesNoView.xaml.cs">
+      <DependentUpon>AnswerYesNoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AnswerFactoryView.xaml.cs">
+      <DependentUpon>AnswerFactoryView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\AnswerTextEntryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AnswerRatingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\MainTabNavPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -51,6 +75,21 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SurveyListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\QuestionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AnswerMultipleChoiceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AnswerYesNoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AnswerFactoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>
