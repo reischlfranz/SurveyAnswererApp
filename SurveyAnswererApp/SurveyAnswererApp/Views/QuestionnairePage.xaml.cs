@@ -58,7 +58,7 @@ namespace SurveyAnswererApp.Views
 
       if (doSend)
       {
-        Navigation.PushAsync(new QuestionnaireSummaryPage());
+        await Navigation.PushAsync(new QuestionnaireSummaryPage());
         return;
       }
     }
