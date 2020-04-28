@@ -8,12 +8,14 @@
              x:Class="SurveyAnswererApp.Views.SurveyDetailPage">
   <ContentPage.Content>
     <StackLayout>
-      <Label Text="(ContentPage) SurveyDetailPage"
-             VerticalOptions="CenterAndExpand"
-             HorizontalOptions="CenterAndExpand" />
+      <Label Text="Survey Detail"
+             />
+      <Label Text="{Binding Questionnaire.Title}" FontSize="Large" />
+      <Label Text="{Binding Questionnaire.Description}" />
       <Button Text="Take Survey" 
               x:Name="TakeSurveyButton" 
-              Clicked="TakeSurveyButton_OnClicked" />
+              Command="{Binding OpenSurveyCommand}"
+              />
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
