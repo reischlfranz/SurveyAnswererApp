@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
@@ -41,8 +43,32 @@ namespace SurveyAnswererApp.ViewModels
       return true;
     }
 
+    #region PropertyRaisingStuffs
+    public event PropertyChangedEventHandler PropertyChanged = delegate { };
+
+    protected void RaiseAllPropertiesChanged()
+    {
+      // By convention, an empty string indicates all properties are invalid.
+      PropertyChanged(this, new PropertyChangedEventArgs(string.Empty));
+    }
+
+    protected void RaisePropertyChanged<T>(Expression<Func<T>> propExpr)
+    {
+      var prop = (PropertyInfo)((MemberExpression)propExpr.Body).Member;
+      this.RaisePropertyChanged(prop.Name);
+    }
+
+    protected void RaisePropertyChanged([CallerMemberName] string propertyName = "")
+    {
+      PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+
+
+    #endregion
+
     #region INotifyPropertyChanged
-    public event PropertyChangedEventHandler PropertyChanged;
+    //public event PropertyChangedEventHandler PropertyChanged;
     protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
     {
       var changed = PropertyChanged;
