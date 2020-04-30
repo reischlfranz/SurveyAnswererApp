@@ -9,21 +9,23 @@
   <ContentView.Content>
     <StackLayout Orientation="Vertical"
                  HorizontalOptions="CenterAndExpand">
-      <Label Text="{Binding AnswerText}"
+      <Label Text="{Binding Answer.AnswerText}"
              HorizontalOptions="StartAndExpand"
              />
       <StackLayout Orientation="Horizontal">
         <Label Text="Yes"
-               x:Name="yesButton" 
                VerticalOptions="Center"/>
         <CheckBox IsEnabled="True"
                   IsChecked="False" 
+                  x:Name="yesButton" 
+                  CheckedChanged="YesButton_OnCheckedChanged"
                   VerticalOptions="Center"/>
         <Label Text="No"
-               x:Name="noButton"
                VerticalOptions="Center"/>
         <CheckBox IsEnabled="True"
                   IsChecked="False" 
+                  x:Name="noButton"
+                  CheckedChanged="NoButton_OnCheckedChanged"
                   VerticalOptions="Center"/>
       </StackLayout>
     </StackLayout>

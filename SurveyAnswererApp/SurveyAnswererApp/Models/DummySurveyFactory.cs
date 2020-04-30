@@ -9,19 +9,21 @@ namespace SurveyAnswererApp.Models {
 
       var rand = new Random();
       var survey = new Questionnaire();
+
       survey.Title = GetRandomString(10);
       survey.Description = GetRandomString(200);
-      survey.Id = rand.Next(100)+100;
+      
+      survey.Id = rand.Next(5)*20+100;
 
       for (var i = 0; i < rand.Next(10)+5; i++) {
         var q = new Question() {
-              QuestionType = QuestionType.Number,
-              Nr = rand.Next(100) + 200,
+              QuestionType = (QuestionType)rand.Next(Enum.GetValues(typeof(QuestionType)).Length),
+              Nr = survey.Id + i,
               QuestionText = GetRandomString(75)
         };
-        for (var j = 0; j < rand.Next(2)+1; j++) {
+        for (var j = 0; j < rand.Next(6)+1; j++) {
           var a = new Answer() {
-                AnswerText = GetRandomString(8)
+                AnswerText = GetRandomString(8+rand.Next(20))
           };
           q.Answers.Add(a);
         }

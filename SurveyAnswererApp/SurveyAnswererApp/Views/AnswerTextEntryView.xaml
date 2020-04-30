@@ -11,7 +11,7 @@
     <StackLayout Orientation="Horizontal"
                  HorizontalOptions="FillAndExpand"
                  >
-      <Label Text="{Binding AnswerText}"
+      <Label Text="{Binding Answer.AnswerText}"
              HorizontalOptions="Start" BackgroundColor="Beige" />
       <Entry HorizontalOptions="FillAndExpand" Placeholder="Enter text here" BackgroundColor="AliceBlue"/>
 
