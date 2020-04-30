@@ -14,25 +14,39 @@ namespace SurveyAnswererApp.Views {
 
     public QuestionView() {
       InitializeComponent();
-      
-      
-      //this.TestAnswerViewCell.Content = new AnswerMultipleChoiceView();
 
-      //var x = this.AnswerDataLayout.BindingContext;
-      foreach (var v in this.AnswerDataLayout.Children)
+      var test = this;
+
+      Console.Out.WriteLine(test.GetType().FullName);
+
+    }
+
+    protected override void OnBindingContextChanged()
+    {
+      if (BindingContext.GetType().Equals(typeof(Question)))
       {
-        Console.Out.WriteLine("####################################");
-        Console.Out.WriteLine("QuestionView::CTOR");
-        Console.Out.WriteLine("####################################");
-        Console.Out.WriteLine(v.GetType().FullName);
+        var question = (Question)BindingContext;
+        // Change BindingContext from implicit Binding to Question to explicit ViewModel
+        BindingContext = new QuestionViewModel(){Question = question};
+        ((QuestionViewModel) BindingContext).AddAnswerViews(this.AnswerDataLayout);
       }
-    }    
-    
+      base.OnBindingContextChanged();
+      //var test = this;
+      //var t1 = BindingContext;
+      //Console.Out.WriteLine("");
+
+      //AnswerDataLayout.Children.Insert(0, new Label(){Text = ((Question) BindingContext).QuestionType.ToString()});
+
+
+
+
+    }
+
     //public Question Question{ get; set; }
-    
+
     //public object QuestionObject{ get; set; }
-    
-    
+
+
     //private long _questionId;
     //public long QuestionId {
     //  get => _questionId;
@@ -59,9 +73,9 @@ namespace SurveyAnswererApp.Views {
     //public QuestionView(object question):this() {
     //  Question = (Question) question;
     //}
-          
+
   }
-  
-  
+
+
 }
 

@@ -9,10 +9,11 @@
              x:Class="SurveyAnswererApp.Views.AnswerMultipleChoiceView">
   <ContentView.Content>
     <StackLayout Orientation="Horizontal">
-      <Label Text="{Binding AnswerText}"
+      <Label Text="{Binding Answer.AnswerText}"
              HorizontalOptions="StartAndExpand" />
       <CheckBox IsEnabled="True"
                 IsChecked="False"
+                x:Name="MultipleChoiceSelection"
                 HorizontalOptions="End" />
     </StackLayout>
   </ContentView.Content>

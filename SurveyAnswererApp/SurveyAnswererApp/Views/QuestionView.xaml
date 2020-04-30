@@ -17,21 +17,29 @@
   <ContentView.Content>
     <StackLayout HorizontalOptions="FillAndExpand"
                  x:Name="QuestionListEntry"
-                 BackgroundColor="Aquamarine"
+                 BackgroundColor="LightGray"
                  >
 
       <Label x:Name="QuestionTextLabel"
-             d:Text="{Binding QuestionText}" />
+             d:Text="{Binding Question.QuestionText}" />
       <Label Text="Select your answer(s):" />
-      <StackLayout VerticalOptions="CenterAndExpand"
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     x:Name="AnswerDataLayout"
+                     BackgroundColor="White"
+                     Margin="5,0,5,5"
+                     >
+
+        </StackLayout>
+        <!--<StackLayout VerticalOptions="CenterAndExpand"
                    HorizontalOptions="FillAndExpand"
                    BindableLayout.ItemsSource="{Binding Answers}"
-                   x:Name="AnswerDataLayout"
+                   x:Name="AnswerDataLayout2"
                    >
         <BindableLayout.ItemTemplate>
           <DataTemplate x:Name="DataTemplateX">
             <StackLayout HorizontalOptions="FillAndExpand">
-              <!--<Label Text="New Answer:" />-->
+              --><!--<Label Text="New Answer:" />--><!--
               <ContentView x:Name="TestAnswerViewCell"
                            BackgroundColor="OrangeRed" 
                            HorizontalOptions="FillAndExpand"
@@ -44,7 +52,7 @@
             </StackLayout>
             </DataTemplate>
           </BindableLayout.ItemTemplate>
-        </StackLayout>
+        </StackLayout>-->
 
       
     </StackLayout>

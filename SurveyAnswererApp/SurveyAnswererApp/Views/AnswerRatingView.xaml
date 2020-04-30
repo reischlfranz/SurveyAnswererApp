@@ -9,11 +9,13 @@
              x:Class="SurveyAnswererApp.Views.AnswerRatingView">
   <ContentView.Content>
     <StackLayout Orientation="Vertical"
-                 HorizontalOptions="FillAndExpand"
-                 >
-      <Label Text="{Binding AnswerText}"
+                 HorizontalOptions="FillAndExpand">
+      <Label Text="{Binding Answer.AnswerText}"
              HorizontalOptions="FillAndExpand" />
-      <Slider Value="4" Maximum="9"  />
+      <Slider Value="4"
+              Maximum="9"
+              MaximumTrackColor="DarkGray"
+              MinimumTrackColor="Accent" />
 
     </StackLayout>
   </ContentView.Content>

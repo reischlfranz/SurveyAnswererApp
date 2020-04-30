@@ -23,7 +23,7 @@
                   Clicked="ExitSurveyButton_OnClicked"
                   AbsoluteLayout.LayoutFlags="PositionProportional"
                   AbsoluteLayout.LayoutBounds="1.0,0.0,AutoSize,AutoSize"
-                  BackgroundColor="Yellow">
+                  >
             <!--TODO Make this a X symbol-->
           </Button>
         </AbsoluteLayout>
@@ -63,7 +63,7 @@
           <StackLayout VerticalOptions="CenterAndExpand"
                        HorizontalOptions="CenterAndExpand"
                        BindableLayout.ItemsSource="{Binding Questionnaire.Questions}"
-                       BackgroundColor="Aqua">
+                       >
             <BindableLayout.ItemTemplate>
               <DataTemplate>
                 
