@@ -1,10 +1,10 @@
 ﻿namespace SurveyAnswererApp.Models.Survey {
   public enum QuestionType {
-    Open = 0,
-    YesNo = 1,
-    SingleChoice = 2,
-    MultipleChoice = 3,
-    Number = 4,
-    Rating = 5
+    OPEN = 0,
+    YES_NO = 1,
+    SINGLE_CHOICE = 2,
+    MULTIPLE_CHOICE = 3,
+    NUMBER = 4,
+    RATING = 5
   }
 }

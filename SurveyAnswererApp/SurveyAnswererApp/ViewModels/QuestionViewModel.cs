@@ -22,7 +22,7 @@ namespace SurveyAnswererApp.ViewModels
 
     protected void UpdateSingleChoiceSelection(Answer selectedAnswer)
     {
-      if (Question.QuestionType == QuestionType.SingleChoice)
+      if (Question.QuestionType == QuestionType.SINGLE_CHOICE)
       {
         foreach (var answer in Question.Answers)
         {
@@ -51,22 +51,22 @@ namespace SurveyAnswererApp.ViewModels
       };
       switch (Question.QuestionType)
       {
-        case QuestionType.YesNo:
+        case QuestionType.YES_NO:
           return new AnswerYesNoView(answer) {BindingContext = answerViewModel};
           break;
-        case QuestionType.SingleChoice:
+        case QuestionType.SINGLE_CHOICE:
           return new AnswerMultipleChoiceView(answer) {BindingContext = answerViewModel};
           break;
-        case QuestionType.MultipleChoice:
+        case QuestionType.MULTIPLE_CHOICE:
           return new AnswerMultipleChoiceView(answer) {BindingContext = answerViewModel};
           break;
-        case QuestionType.Rating:
+        case QuestionType.RATING:
           return new AnswerRatingView(answer) {BindingContext = answerViewModel};
           break;
-        case QuestionType.Number:
+        case QuestionType.NUMBER:
         //return new AnswerNumberView(answer){BindingContext = answerViewModel};
         //break;
-        case QuestionType.Open:
+        case QuestionType.OPEN:
           return new AnswerTextEntryView(answer) {BindingContext = answerViewModel};
           break;
         default:
