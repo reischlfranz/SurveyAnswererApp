@@ -12,7 +12,7 @@
       <Label Text="{Binding Answer.AnswerText}"
              HorizontalOptions="StartAndExpand" />
       <CheckBox IsEnabled="True"
-                IsChecked="False"
+                IsChecked="{Binding MultipleChoiceAnswerSelection}"
                 x:Name="MultipleChoiceSelection"
                 HorizontalOptions="End" />
     </StackLayout>

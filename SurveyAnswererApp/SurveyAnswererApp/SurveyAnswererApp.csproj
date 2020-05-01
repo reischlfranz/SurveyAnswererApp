@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\AnswerNumberView.xaml.cs">
+      <DependentUpon>AnswerNumberView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\AnswerSingleChoiceView.xaml.cs">
       <DependentUpon>AnswerSingleChoiceView.xaml</DependentUpon>
     </Compile>
@@ -52,12 +55,12 @@
     <Compile Update="Views\AnswerYesNoView.xaml.cs">
       <DependentUpon>AnswerYesNoView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\AnswerFactoryView.xaml.cs">
-      <DependentUpon>AnswerFactoryView.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\AnswerNumberView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\AnswerSingleChoiceView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -93,10 +96,6 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AnswerYesNoView.xaml">
-      <SubType>Designer</SubType>
-      <Generator></Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\AnswerFactoryView.xaml">
       <SubType>Designer</SubType>
       <Generator></Generator>
     </EmbeddedResource>

@@ -66,8 +66,8 @@ namespace SurveyAnswererApp.ViewModels
           return new AnswerRatingView(answer) {BindingContext = answerViewModel};
           break;
         case QuestionType.NUMBER:
-        //return new AnswerNumberView(answer){BindingContext = answerViewModel};
-        //break;
+        return new AnswerNumberView(answer){BindingContext = answerViewModel};
+        break;
         case QuestionType.OPEN:
           return new AnswerTextEntryView(answer) {BindingContext = answerViewModel};
           break;
