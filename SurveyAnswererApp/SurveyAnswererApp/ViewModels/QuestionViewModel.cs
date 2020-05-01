@@ -15,21 +15,23 @@ namespace SurveyAnswererApp.ViewModels
     public bool YesNoAnswerYesSelection;
     public bool YesNoAnswerNoSelection;
 
-    private List<AnswerViewModel> _answerViewModels = new List<AnswerViewModel>();
+    internal List<AnswerViewModel> AnswerViewModels = new List<AnswerViewModel>();
 
     public ICommand ValueEnteredCommand;
 
 
-    protected void UpdateSingleChoiceSelection(Answer selectedAnswer)
+    internal void UpdateSingleChoiceSelection(AnswerViewModel sender)
     {
       if (Question.QuestionType == QuestionType.SINGLE_CHOICE)
       {
-        foreach (var answer in Question.Answers)
+        foreach (var answerViewModel in AnswerViewModels)
         {
-          if (answer != selectedAnswer)
+          if (answerViewModel != sender)
           {
+            answerViewModel.SingleChoiceAnswerSelection = false;
           }
         }
+
       }
     }
 
@@ -53,9 +55,9 @@ namespace SurveyAnswererApp.ViewModels
       {
         case QuestionType.YES_NO:
           return new AnswerYesNoView(answer) {BindingContext = answerViewModel};
-          break;
+          break; 
         case QuestionType.SINGLE_CHOICE:
-          return new AnswerMultipleChoiceView(answer) {BindingContext = answerViewModel};
+          return new AnswerSingleChoiceView(answer) {BindingContext = answerViewModel};
           break;
         case QuestionType.MULTIPLE_CHOICE:
           return new AnswerMultipleChoiceView(answer) {BindingContext = answerViewModel};

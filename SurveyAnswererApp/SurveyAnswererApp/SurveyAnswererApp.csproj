@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\AnswerSingleChoiceView.xaml.cs">
+      <DependentUpon>AnswerSingleChoiceView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\AnswerTextEntryView.xaml.cs">
       <DependentUpon>AnswerTextEntryView.xaml</DependentUpon>
     </Compile>
@@ -55,6 +58,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Views\AnswerSingleChoiceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\AnswerTextEntryView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

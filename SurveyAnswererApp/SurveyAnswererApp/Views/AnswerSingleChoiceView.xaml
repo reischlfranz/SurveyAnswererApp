@@ -1,0 +1,53 @@
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:sf="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="SurveyAnswererApp.Views.AnswerSingleChoiceView">
+  <ContentView.Content>
+    <StackLayout Orientation="Horizontal">
+
+      <!-- Solution with checkboxes, internal solution -->
+      <CheckBox IsEnabled="True"
+                IsChecked="{Binding SingleChoiceAnswerSelection}"
+                Color="Black"
+                x:Name="SingleChoiceSelection"
+                HorizontalOptions="Start" />
+      <Label Text="{Binding Answer.AnswerText}"
+             VerticalTextAlignment="Center"/>
+
+      <!-- SyncFusion RadioButton -->
+      <!-- TODO Find a replacement package for the SyncFusion one (Payed license, stupendously expensive) -->
+      <!--<sf:SfRadioButton Text="{Binding Answer.AnswerText}"
+                        x:Name="SingleChoiceSelection"
+                        IsChecked="{Binding SingleChoiceAnswerSelection}"
+                        />-->
+
+      <!-- InputKit RadioButton -->
+      <!-- Note: Does not update, does not fire command. -->
+      <!-- <input:RadioButton Text="{Binding Answer.AnswerText}" -->
+      <!--                    x:Name="SingleChoiceSelection" -->
+      <!--                    IsChecked="{Binding SingleChoiceAnswerSelection}" -->
+      <!--                    Checked="RadioButton_OnChecked" -->
+      <!--                    /> -->
+      <!-- <Label Text="{Binding Answer.AnswerText}" /> -->
+      <!-- <CheckBox IsChecked="{Binding SingleChoiceAnswerSelection}" -->
+      <!-- /> -->
+
+      <!-- <input:RadioButtonGroupView -->
+      <!--   SelectedItem="{Binding SingleChoiceAnswerIntegerWrapper}" -->
+      <!--   SelectedItemChangedCommand="{Binding SingleChoiceAnswerChangedCommand}" -->
+      <!--   > -->
+      <!--   <input:RadioButton IsVisible="True" -->
+      <!--                      x:Name="HiddenAnswer" /> -->
+      <!--   <input:RadioButton Text="{Binding Answer.AnswerText}" /> -->
+      <!-- </input:RadioButtonGroupView> -->
+
+    </StackLayout>
+  </ContentView.Content>
+</ContentView>
