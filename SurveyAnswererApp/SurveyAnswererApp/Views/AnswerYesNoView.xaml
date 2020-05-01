@@ -4,8 +4,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.AnswerYesNoView">
+  <ContentView.Resources>
+    <ResourceDictionary>
+
+      <Style x:Key="TestRadioCheckBox" TargetType="CheckBox">
+        <Setter Property="Color" Value="Turquoise" />
+      </Style>
+
+      <CheckBox x:Key="RadioButton" />
+      <Color x:Key="Primary">#2196F3</Color>
+      <Color x:Key="Accent">#96d1ff</Color>
+      <Color x:Key="LightTextColor">#999999</Color>
+    </ResourceDictionary>
+  </ContentView.Resources>
+
+
+
   <ContentView.Content>
     <StackLayout Orientation="Vertical"
                  HorizontalOptions="CenterAndExpand">
@@ -13,20 +30,35 @@
              HorizontalOptions="StartAndExpand"
              />
       <StackLayout Orientation="Horizontal">
-        <Label Text="Yes"
-               VerticalOptions="Center"/>
-        <CheckBox IsEnabled="True"
-                  IsChecked="False" 
-                  x:Name="yesButton" 
-                  CheckedChanged="YesButton_OnCheckedChanged"
-                  VerticalOptions="Center"/>
-        <Label Text="No"
-               VerticalOptions="Center"/>
-        <CheckBox IsEnabled="True"
-                  IsChecked="False" 
-                  x:Name="noButton"
-                  CheckedChanged="NoButton_OnCheckedChanged"
-                  VerticalOptions="Center"/>
+        
+        <input:RadioButtonGroupView
+          SelectedIndex="{Binding YesNoAnswerSelection}"
+          Orientation="Horizontal">
+          <input:RadioButton Text="Yes" 
+                             CircleColor="Green"
+                             Color="Green"
+                             />
+          <input:RadioButton Text="No"
+                             CircleColor="Red"
+                             Color="Red"
+                             />
+        </input:RadioButtonGroupView>
+
+        <!-- Solution with checkboxes, internal solution  -->
+        <!-- <CheckBox IsEnabled="True" -->
+        <!--           IsChecked="False"  -->
+        <!--           x:Name="yesButton"  -->
+        <!--           Color="Green" -->
+        <!--           CheckedChanged="YesButton_OnCheckedChanged" -->
+        <!--           VerticalOptions="Center"/> -->
+        <!-- <Label Text="No" -->
+        <!--        VerticalOptions="Center"/> -->
+        <!-- <CheckBox IsEnabled="True" -->
+        <!--           IsChecked="False"  -->
+        <!--           x:Name="noButton" -->
+        <!--           Color="Red" -->
+        <!--           CheckedChanged="NoButton_OnCheckedChanged" -->
+        <!--           VerticalOptions="Center"/> -->
       </StackLayout>
     </StackLayout>
   </ContentView.Content>
