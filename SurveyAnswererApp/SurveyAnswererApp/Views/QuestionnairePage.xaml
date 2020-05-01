@@ -40,7 +40,7 @@
       <!-- </Editor> -->
 
       <!-- Questionnaire content -->
-      <RefreshView>
+      <RefreshView IsEnabled="False">
         <ScrollView>
           
           <!-- <ListView VerticalOptions="CenterAndExpand" -->
@@ -62,7 +62,7 @@
           <!-- -->
           <StackLayout VerticalOptions="CenterAndExpand"
                        HorizontalOptions="CenterAndExpand"
-                       BindableLayout.ItemsSource="{Binding Questionnaire.Questions}"
+                       BindableLayout.ItemsSource="{Binding Questions}"
                        >
             <BindableLayout.ItemTemplate>
               <DataTemplate>
@@ -92,19 +92,22 @@
         <Button Text="Back"
                 HorizontalOptions="StartAndExpand"
                 x:Name="BackButton"
-                Clicked="BackButton_OnClicked" />
-        <Label Text="{Binding CurrentPage}"
+                Command="{Binding LastPageCommand}" />
+        <Label Text="{Binding CurrentPageIndex}"
                HorizontalOptions="Center"
                x:Name="CurrentPageLabel" />
         <Button Text="Next"
                 HorizontalOptions="EndAndExpand"
                 x:Name="NextButton"
-                Clicked="NextButton_OnClicked" />
+                Command="{Binding NextPageCommand}" />
       </StackLayout>
       <Button HorizontalOptions="CenterAndExpand"
               Text="Done"
               x:Name="DoneSurveyButton"
-              Clicked="DoneSurveyButton_OnClicked" />
+              Clicked="DoneSurveyButton_OnClicked">
+        <!-- TODO Check Enable status manually, due to not using command directly for AreYouSure dialog -->
+      </Button>
+
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>
