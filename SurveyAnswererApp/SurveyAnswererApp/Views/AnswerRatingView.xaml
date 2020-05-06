@@ -12,7 +12,7 @@
                  HorizontalOptions="FillAndExpand">
       <Label Text="{Binding Answer.AnswerText}"
              HorizontalOptions="FillAndExpand" />
-      <Slider Value="4"
+      <Slider Value="{Binding RatingAnswerValue}"
               Maximum="9"
               MaximumTrackColor="DarkGray"
               MinimumTrackColor="Accent" />

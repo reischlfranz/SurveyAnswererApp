@@ -6,15 +6,18 @@
              xmlns:d="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SurveyAnswererApp.Views.AnswerTextEntryView">
+             x:Class="SurveyAnswererApp.Views.AnswerNumberView">
   <ContentView.Content>
-    <StackLayout Orientation="Horizontal"
-                 HorizontalOptions="FillAndExpand"
-                 >
+    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="FillAndExpand">
       <Label Text="{Binding Answer.AnswerText}"
              HorizontalOptions="Start" BackgroundColor="Beige" />
-      <Entry Text="{Binding FreeFormAnswerText}"
-        HorizontalOptions="FillAndExpand" Placeholder="Enter text here" BackgroundColor="AliceBlue"/>
+
+      <Entry Keyboard="Numeric"
+             Text="{Binding NumberAnswerValue}"
+             HorizontalOptions="FillAndExpand" 
+             Placeholder="Enter text here" 
+             BackgroundColor="AliceBlue"/>
 
     </StackLayout>
   </ContentView.Content>

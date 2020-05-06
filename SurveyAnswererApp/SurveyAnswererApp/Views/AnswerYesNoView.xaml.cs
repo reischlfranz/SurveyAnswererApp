@@ -25,7 +25,7 @@ namespace SurveyAnswererApp.Views {
     {
       if (((CheckBox)sender).IsChecked)
       {
-        noButton.IsChecked = false;
+        // noButton.IsChecked = false;
       }
       Answer.Value = "Yes";
     }
@@ -34,7 +34,7 @@ namespace SurveyAnswererApp.Views {
     {
       if (((CheckBox)sender).IsChecked)
       {
-        yesButton.IsChecked = false;
+        // yesButton.IsChecked = false;
       }
       Answer.Value = "No";
     }
