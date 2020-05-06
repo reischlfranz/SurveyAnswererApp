@@ -29,6 +29,8 @@ namespace SurveyAnswererApp.ViewModels
           if (answerViewModel != sender)
           {
             answerViewModel.SingleChoiceAnswerSelection = false;
+            // Hotfix: Binding value to RadioButton.IsChecked does not work
+            answerViewModel.SingleChoiceSelectionRadioButton.IsChecked = false;
           }
         }
 

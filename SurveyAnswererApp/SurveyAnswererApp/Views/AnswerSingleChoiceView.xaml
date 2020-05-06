@@ -12,41 +12,18 @@
   <ContentView.Content>
     <StackLayout Orientation="Horizontal">
 
-      <!-- Solution with checkboxes, internal solution -->
-      <CheckBox IsEnabled="True"
-                IsChecked="{Binding SingleChoiceAnswerSelection}"
-                Color="Black"
-                x:Name="SingleChoiceSelection"
-                HorizontalOptions="Start" />
-      <Label Text="{Binding Answer.AnswerText}"
-             VerticalTextAlignment="Center"/>
-
-      <!-- SyncFusion RadioButton -->
-      <!-- TODO Find a replacement package for the SyncFusion one (Payed license, stupendously expensive) -->
+      <!-- SyncFusion RadioButton (Payed license, stupendously expensive) -->
       <!--<sf:SfRadioButton Text="{Binding Answer.AnswerText}"
                         x:Name="SingleChoiceSelection"
                         IsChecked="{Binding SingleChoiceAnswerSelection}"
                         />-->
 
       <!-- InputKit RadioButton -->
-      <!-- Note: Does not update, does not fire command. -->
-      <!-- <input:RadioButton Text="{Binding Answer.AnswerText}" -->
-      <!--                    x:Name="SingleChoiceSelection" -->
-      <!--                    IsChecked="{Binding SingleChoiceAnswerSelection}" -->
-      <!--                    Checked="RadioButton_OnChecked" -->
-      <!--                    /> -->
-      <!-- <Label Text="{Binding Answer.AnswerText}" /> -->
-      <!-- <CheckBox IsChecked="{Binding SingleChoiceAnswerSelection}" -->
-      <!-- /> -->
-
-      <!-- <input:RadioButtonGroupView -->
-      <!--   SelectedItem="{Binding SingleChoiceAnswerIntegerWrapper}" -->
-      <!--   SelectedItemChangedCommand="{Binding SingleChoiceAnswerChangedCommand}" -->
-      <!--   > -->
-      <!--   <input:RadioButton IsVisible="True" -->
-      <!--                      x:Name="HiddenAnswer" /> -->
-      <!--   <input:RadioButton Text="{Binding Answer.AnswerText}" /> -->
-      <!-- </input:RadioButtonGroupView> -->
+      <!-- Note: Does not update, does not fire command. Hotfix -->
+      <input:RadioButton Text="{Binding Answer.AnswerText}"
+                         x:Name="SingleChoiceSelection" 
+                         Clicked="SingleChoiceSelection_OnClicked"
+                         />
 
     </StackLayout>
   </ContentView.Content>

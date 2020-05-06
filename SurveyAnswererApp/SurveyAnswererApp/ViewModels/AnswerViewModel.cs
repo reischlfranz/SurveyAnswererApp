@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Plugin.InputKit.Shared.Controls;
 using SurveyAnswererApp.Models.Survey;
 using SurveyAnswererApp.Views;
 using Xamarin.Forms;
@@ -63,6 +64,9 @@ namespace SurveyAnswererApp.ViewModels
         RaiseAllPropertiesChanged();
       }
     }
+    // Hotfix: Binding value to RadioButton.IsChecked does not work.
+    // Keeping reference to manipulate manually
+    public RadioButton SingleChoiceSelectionRadioButton { get; set; }
 
     private int _numberAnswerValue;
     public int NumberAnswerValue
