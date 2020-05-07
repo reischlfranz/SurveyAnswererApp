@@ -30,7 +30,13 @@ namespace SurveyAnswererApp.ViewModels {
     public ICommand SendCommand { get; private set; }
 
 
-
+    public string CurrentPageStatus
+    {
+      get
+      {
+        return "Page " + (CurrentPageIndex / ITEMS_PER_PAGE + 1) + " / " + (Questionnaire.Questions.Count / ITEMS_PER_PAGE);
+      }
+    }
 
     // private Questionnaire _questionnaire;
     public Questionnaire Questionnaire{ 

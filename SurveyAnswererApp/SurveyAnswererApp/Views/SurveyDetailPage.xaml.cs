@@ -18,6 +18,5 @@ namespace SurveyAnswererApp.Views
       BindingContext = new SurveyDetailViewModel(questionnaire);
       InitializeComponent();
     }
-
   }
 }

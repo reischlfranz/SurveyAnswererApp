@@ -8,16 +8,17 @@
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.AnswerNumberView">
   <ContentView.Content>
-    <StackLayout Orientation="Vertical"
+    <StackLayout Orientation="Horizontal"
                  HorizontalOptions="FillAndExpand">
+
       <Label Text="{Binding Answer.AnswerText}"
              HorizontalOptions="Start" BackgroundColor="Beige" />
 
       <Entry Keyboard="Numeric"
              Text="{Binding NumberAnswerValue}"
-             HorizontalOptions="FillAndExpand" 
-             Placeholder="Enter text here" 
-             BackgroundColor="AliceBlue"/>
+             HorizontalOptions="FillAndExpand"
+             Placeholder="Enter text here"
+             BackgroundColor="AliceBlue" />
 
     </StackLayout>
   </ContentView.Content>
