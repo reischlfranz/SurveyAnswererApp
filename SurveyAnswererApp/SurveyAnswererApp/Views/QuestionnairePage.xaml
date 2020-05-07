@@ -9,8 +9,13 @@
              xmlns:vm="clr-namespace:SurveyAnswererApp.ViewModels;assembly=SurveyAnswererApp"
              xmlns:local="clr-namespace:SurveyAnswererApp"
              xmlns:sv="clr-namespace:SurveyAnswererApp.Models.Survey;assembly=SurveyAnswererApp"
+             xmlns:style="clr-namespace:SurveyAnswererApp.Views.Style;assembly=SurveyAnswererApp"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.QuestionnairePage">
+  <ContentPage.Resources>
+    <style:TextStyleResource />
+  </ContentPage.Resources>
+
   <ContentPage.Content>
     <StackLayout>
 
@@ -29,52 +34,26 @@
         </AbsoluteLayout>
       </ContentView>
 
-      <Label Text="(ContentPage) QuestionnairePage"
-             LineBreakMode="WordWrap"
-             HorizontalOptions="CenterAndExpand" />
-      <!-- <Editor IsEnabled="False" -->
-      <!--         HorizontalOptions="CenterAndExpand"> -->
-      <!--   <Editor.Text> -->
-      <!--     Survey Questions go here! -->
-      <!--   </Editor.Text> -->
-      <!-- </Editor> -->
+      <Label Text="{Binding Questionnaire.Title, StringFormat=Survey \'\{0\}\'}"
+             Style="{StaticResource TitleText}" />
 
       <!-- Questionnaire content -->
       <RefreshView IsEnabled="False">
         <ScrollView>
-          
-          <!-- <ListView VerticalOptions="CenterAndExpand" -->
-          <!--              HorizontalOptions="CenterAndExpand" -->
-          <!--              ItemsSource="{Binding Questionnaire.Questions}" -->
-          <!--              BackgroundColor="Aqua"> -->
-          <!--   <ListView.ItemTemplate> -->
-          <!--     <DataTemplate x:Name="itemData"> -->
-          <!--       <StackLayout> -->
-          <!--         <Label Text="New Question" /> -->
-          <!--         ~1~ <Label Text="{Binding QuestionText}" /> @1@ -->
-          <!--         <view:QuestionView Question="{Binding .}" x:Name="QuestionViewUserControl"  /> -->
-          <!--       </StackLayout> -->
-          <!--     </DataTemplate> -->
-          <!-- -->
-          <!--   </ListView.ItemTemplate> -->
-          <!-- -->
-          <!-- </ListView> -->
-          <!-- -->
+
           <StackLayout VerticalOptions="CenterAndExpand"
-                       HorizontalOptions="CenterAndExpand"
+                       HorizontalOptions="FillAndExpand"
+                       Margin="10,0"
                        BindableLayout.ItemsSource="{Binding Questions}"
                        >
             <BindableLayout.ItemTemplate>
               <DataTemplate>
                 
                 <StackLayout>
-                  <Label Text="New Question" />
-                  <!-- <view:QuestionView QuestionId="{Binding Nr}" -->
-                  <!--                    x:Name="QuestionViewUserControl" /> -->
-                  <Label Text="{Binding Nr}" />
-                  <Label Text="{Binding QuestionText}" />
-                  <!-- <view:QuestionView QuestionId="215" -->
-                  <!--                    x:Name="QuestionViewUserControl"  /> -->
+                  <Label Text="{Binding Nr, StringFormat=Question ID \{0\}:}" 
+                         Style="{StaticResource QuestionIdText}" />
+                  <Label Text="{Binding QuestionText}" 
+                         Style="{StaticResource QuestionText}" />
                   <view:QuestionView />
                 </StackLayout>
               </DataTemplate>
@@ -93,7 +72,7 @@
                 HorizontalOptions="StartAndExpand"
                 x:Name="BackButton"
                 Command="{Binding LastPageCommand}" />
-        <Label Text="{Binding CurrentPageIndex}"
+        <Label Text="{Binding CurrentPageStatus}"
                HorizontalOptions="Center"
                x:Name="CurrentPageLabel" />
         <Button Text="Next"

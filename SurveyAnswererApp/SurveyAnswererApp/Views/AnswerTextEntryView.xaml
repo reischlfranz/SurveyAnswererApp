@@ -7,14 +7,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.AnswerTextEntryView">
+  <ContentView.Resources>
+    <ResourceDictionary>
+      <Color x:Key="answerTextEntryLabelBackground">Beige</Color>
+    </ResourceDictionary>
+  </ContentView.Resources>
   <ContentView.Content>
-    <StackLayout Orientation="Horizontal"
-                 HorizontalOptions="FillAndExpand"
-                 >
+    <StackLayout Orientation="Vertical"
+                 HorizontalOptions="FillAndExpand">
       <Label Text="{Binding Answer.AnswerText}"
-             HorizontalOptions="Start" BackgroundColor="Beige" />
+             HorizontalOptions="Start"
+             BackgroundColor="{StaticResource answerTextEntryLabelBackground}" />
       <Entry Text="{Binding FreeFormAnswerText}"
-        HorizontalOptions="FillAndExpand" Placeholder="Enter text here" BackgroundColor="AliceBlue"/>
+             HorizontalOptions="FillAndExpand" Placeholder="Enter text here" BackgroundColor="AliceBlue" />
 
     </StackLayout>
   </ContentView.Content>

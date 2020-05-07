@@ -40,6 +40,9 @@
     <Compile Update="Views\MainTabNavPage.xaml.cs">
       <DependentUpon>MainTabNavPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Style\TextStyleResource.xaml.cs">
+      <DependentUpon>TextStyleResource.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SurveyDetailPage.xaml.cs">
       <DependentUpon>SurveyDetailPage.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\QuestionnaireSummaryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Style\TextStyleResource.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SurveyDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

@@ -8,8 +8,12 @@
              mc:Ignorable="d q"
              xmlns:view="clr-namespace:SurveyAnswererApp.Views"
              xmlns:vm="clr-namespace:SurveyAnswererApp.ViewModels"
+             xmlns:style="clr-namespace:SurveyAnswererApp.Views.Style;assembly=SurveyAnswererApp"
              x:Class="SurveyAnswererApp.Views.QuestionView">
 
+  <ContentView.Resources>
+    <style:TextStyleResource />
+  </ContentView.Resources>
   <!--<ContentView.BindingContext>
     <vm:QuestionViewModel />
   </ContentView.BindingContext>-->
@@ -18,16 +22,19 @@
     <StackLayout HorizontalOptions="FillAndExpand"
                  x:Name="QuestionListEntry"
                  BackgroundColor="LightGray"
+                 Margin="10,0"
                  >
 
       <Label x:Name="QuestionTextLabel"
              d:Text="{Binding Question.QuestionText}" />
-      <Label Text="Select your answer(s):" />
+      <Label Text="Select your answer(s):" 
+             Style="{StaticResource QuestionText}" />
         <StackLayout VerticalOptions="CenterAndExpand"
                      HorizontalOptions="FillAndExpand"
                      x:Name="AnswerDataLayout"
                      BackgroundColor="White"
-                     Margin="5,0,5,5"
+                     Margin="5,0,2,2"
+                     Padding="5,5,5,5"
                      >
 
         </StackLayout>

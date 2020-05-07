@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                    xmlns:controls="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+                    x:Class="SurveyAnswererApp.Views.Style.TextStyleResource"
+                    >
+
+  <Style x:Key="BaseText" 
+         TargetType="Label">
+    <Setter Property="FontSize" 
+            Value="12" />
+    <!--<Setter Property="FontAttributes" 
+            Value="Italic,Bold" />-->
+    <Setter Property="LineBreakMode"
+            Value="WordWrap" />
+    <Setter Property="TextColor" 
+            Value="SlateGray" />
+  </Style>
+  <Style x:Key="TitleText" 
+         TargetType="Label" 
+         BasedOn="{StaticResource BaseText}">
+    <Setter Property="FontSize" 
+            Value="18" />
+    <Setter Property="HorizontalOptions" 
+            Value="FillAndExpand" />
+    <Setter Property="Margin" 
+            Value="20,0,20,0" />
+    <!--<Setter Property="BackgroundColor" 
+            Value="Yellow" />-->
+  </Style>
+  <Style x:Key="QuestionText" 
+         TargetType="Label" 
+         BasedOn="{StaticResource BaseText}">
+    <Setter Property="FontSize" 
+            Value="16" />
+  </Style>  
+  <Style x:Key="QuestionIdText" 
+         TargetType="Label" 
+         BasedOn="{StaticResource BaseText}">
+    <Setter Property="TextDecorations" Value="Underline" />
+  </Style>  
+  <Style x:Key="AnswerAskText" 
+         TargetType="Label" 
+         BasedOn="{StaticResource BaseText}">
+    <Setter Property="TextDecorations" Value="Underline" />
+  </Style>  
+  <Style x:Key="AnswerSelectionText" 
+         TargetType="Label" 
+         BasedOn="{StaticResource BaseText}">
+    <Setter Property="TextDecorations" Value="Underline" />
+  </Style>
+
+  <!--Answers-->
+  <Style x:Key="AnswerRadioButton"
+         TargetType="controls:RadioButton">
+    <Setter Property="TextFontSize" 
+            Value="16" />
+    <Setter Property="Color" 
+            Value="Accent" />
+    <Setter Property="CircleColor" 
+            Value="SlateGray" />
+    <!--<Setter Property="CircleSize" 
+            Value="12" />--> <!-- Does not work :/ -->
+    <!--<Setter Property="FontFamily" 
+            Value="Times New Roman" />--> <!-- Does not work :/ -->
+  </Style>  
+  <Style x:Key="YesAnswerRadioButton"
+         TargetType="controls:RadioButton"
+         BasedOn="{StaticResource AnswerRadioButton}">
+    <Setter Property="Color" 
+            Value="Green" />
+  </Style>  
+  <Style x:Key="NoAnswerRadioButton"
+         TargetType="controls:RadioButton"
+         BasedOn="{StaticResource AnswerRadioButton}">
+    <Setter Property="Color" 
+            Value="Red" />
+  </Style>
+
+</ResourceDictionary>
