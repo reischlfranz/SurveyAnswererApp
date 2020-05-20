@@ -15,9 +15,9 @@
     <StackLayout Orientation="Vertical"
                  HorizontalOptions="CenterAndExpand">
       <Label Text="{Binding Answer.AnswerText}"
-             HorizontalOptions="StartAndExpand"
+             HorizontalOptions="Center"
              />
-      <StackLayout Orientation="Horizontal">
+      <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
         
         <input:RadioButtonGroupView
           SelectedIndex="{Binding YesNoAnswerSelection}"
