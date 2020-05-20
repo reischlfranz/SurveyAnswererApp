@@ -7,7 +7,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
-             xmlns:sf="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:style="clr-namespace:SurveyAnswererApp.Views.Style;assembly=SurveyAnswererApp"
              x:Class="SurveyAnswererApp.Views.AnswerSingleChoiceView">
   <ContentView.Resources>

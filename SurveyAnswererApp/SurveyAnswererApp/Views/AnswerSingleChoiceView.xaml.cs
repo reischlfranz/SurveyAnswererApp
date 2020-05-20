@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Plugin.InputKit.Shared.Controls;
+using RadioButton = Plugin.InputKit.Shared.Controls.RadioButton;
 using SurveyAnswererApp.Models.Survey;
 using SurveyAnswererApp.ViewModels;
 using Xamarin.Forms;
