@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
-using Plugin.InputKit.Shared.Controls;
+using RadioButton = Plugin.InputKit.Shared.Controls.RadioButton;
 using SurveyAnswererApp.Models.Survey;
-using SurveyAnswererApp.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace SurveyAnswererApp.ViewModels
 {
