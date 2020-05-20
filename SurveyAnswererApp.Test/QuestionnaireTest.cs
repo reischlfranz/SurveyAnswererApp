@@ -18,8 +18,8 @@ namespace SurveyAnswererApp.Test {
 
       [TestMethod]
       public void IllegalSurveyArguments() {
-        Assert.ThrowsException<ArgumentException>(() => _question.Nr = -1);
-        Assert.ThrowsException<ArgumentException>(() => _question.Nr = long.MinValue);
+        Assert.ThrowsException<ArgumentException>(() => _question.Id = -1);
+        Assert.ThrowsException<ArgumentException>(() => _question.Id = long.MinValue);
         
         // for later use
         // Assert.ThrowsException<ArgumentException>(() => _answer.Id = -1);
@@ -43,9 +43,9 @@ namespace SurveyAnswererApp.Test {
       [TestMethod]
       public void ValidSurveyArguments(){
         try {
-          _question.Nr = 0;
-          _question.Nr = 1;
-          _question.Nr = long.MaxValue;
+          _question.Id = 0;
+          _question.Id = 1;
+          _question.Id = long.MaxValue;
           
           // for later use
           // _answer.Id = 0;

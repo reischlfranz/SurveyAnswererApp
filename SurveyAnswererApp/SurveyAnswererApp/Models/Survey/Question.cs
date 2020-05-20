@@ -7,8 +7,8 @@ namespace SurveyAnswererApp.Models.Survey {
   public class Question {
 
     private long _questionId = 0;
-    [JsonPropertyName("nr")]
-    public long Nr {
+    [JsonPropertyName("id")]
+    public long Id {
       get => _questionId;
       set {
         if (value < 0) throw new ArgumentException("Value cannot be negative");
