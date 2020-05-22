@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0"
+      encoding="utf-8"?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -6,16 +7,116 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.SurveyDetailPage">
-  <ContentPage.Content>
-    <StackLayout>
-      <Label Text="Survey Detail"
-             />
-      <Label Text="{Binding Questionnaire.Title}" FontSize="Large" />
-      <Label Text="{Binding Questionnaire.Description}" />
-      <Button Text="Take Survey" 
-              x:Name="TakeSurveyButton" 
-              Command="{Binding OpenSurveyCommand}"
+  <NavigationPage.TitleView>
+    <StackLayout Orientation="Horizontal"
+                 HorizontalOptions="FillAndExpand">
+      <Label Text="Survey details"
+             HorizontalOptions="StartAndExpand"
+             VerticalOptions="CenterAndExpand"
+             FontAttributes="Bold"
+             FontSize="20" />
+      <Button Text="Dismiss ❌"
+              x:Name="DismissButton"
+              VerticalOptions="CenterAndExpand"
+              HorizontalOptions="End"
+              Clicked="DismissButton_OnClicked"
               />
+    </StackLayout>
+  </NavigationPage.TitleView>
+
+  <ContentPage.Content>
+    <StackLayout Padding="15,10,25,10"
+                 VerticalOptions="FillAndExpand">
+      <!-- <Label Text="Survey Detail" -->
+      <!--        BackgroundColor="Aqua" /> -->
+      <ScrollView VerticalOptions="FillAndExpand">
+        <StackLayout VerticalOptions="FillAndExpand">
+          <Label Text="{Binding Questionnaire.Title}"
+                 FontSize="Large" />
+          <!-- Divider -->
+          <BoxView WidthRequest="1"
+                   HeightRequest="4"
+                   BackgroundColor="LightSlateGray" />
+          <Label Text="{Binding Questionnaire.Description}"
+                 />
+          <BoxView WidthRequest="1"
+                   HeightRequest="4"
+                   BackgroundColor="LightSlateGray" />
+          <Label Text="{Binding Questionnaire.Questions.Count, StringFormat=\{0\} Questions}"
+                 HorizontalOptions="EndAndExpand" />
+          <BoxView WidthRequest="1"
+                   HeightRequest="4"
+                   BackgroundColor="LightSlateGray" />
+          <Grid>
+            <Grid.RowDefinitions>
+              <RowDefinition />
+              <RowDefinition />
+              <RowDefinition />
+              <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="4*" />
+              <ColumnDefinition Width="6*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0"
+                   Grid.ColumnSpan="2"
+                   Text="Survey details:"
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"
+                   FontSize="Subtitle" />
+            <Label Grid.Row="1"
+                   Grid.Column="0"
+                   Text="Created on: " 
+                   Padding="10,0,0,0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"
+                   />
+            <Label Grid.Row="2"
+                   Grid.Column="0"
+                   Text="Downloaded on: " 
+                   Padding="10,0,0,0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"
+                   />
+            <Label Grid.Row="3"
+                   Grid.Column="0"
+                   Padding="10,0,0,0"
+                   VerticalOptions="Center"
+                   HorizontalOptions="FillAndExpand"
+                   Text="Survey ID: " />
+            
+            <Label Grid.Row="1"
+                   Grid.Column="1"
+                   Text="{Binding CreatedDate}"
+                   VerticalOptions="CenterAndExpand"
+                   />
+            <Label Grid.Row="2"
+                   Grid.Column="1"
+                   Text="{Binding Questionnaire.SurveyMeta.FirstRetrievalTime}"
+                   VerticalOptions="CenterAndExpand"
+                   />
+            <Label Grid.Row="3"
+                   Grid.Column="1"
+                   Text="{Binding Questionnaire.Id}"
+                   VerticalOptions="CenterAndExpand"
+                   />
+
+            <!-- <BoxView Grid.Row="3" -->
+            <!--          Grid.Column="1" -->
+            <!--          BackgroundColor="Chocolate"  -->
+            <!--          /> -->
+
+          </Grid>
+        </StackLayout>
+      </ScrollView>
+      <Button Text="Take Survey now ▶"
+              FontSize="Large"
+              x:Name="TakeSurveyButton"
+              WidthRequest="260"
+              HeightRequest="120"
+              VerticalOptions="End"
+              HorizontalOptions="EndAndExpand"
+              Command="{Binding OpenSurveyCommand}" />
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

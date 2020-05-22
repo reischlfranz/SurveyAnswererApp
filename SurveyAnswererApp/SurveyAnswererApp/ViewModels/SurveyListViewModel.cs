@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Input;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using SurveyAnswererApp.Models;
 using SurveyAnswererApp.Models.Survey;
-using SurveyAnswererApp.Views;
-using Xamarin.Forms;
 
 namespace SurveyAnswererApp.ViewModels
 {
   public class SurveyListViewModel : BaseViewModel
   {
-    public ObservableCollection<Questionnaire> Surveys { get; set; }
+    private ObservableCollection<Questionnaire> _surveys;
+
+    public ObservableCollection<Questionnaire> Surveys {
+      get {
+        // Update the list to reflect only 
+        var tempList = _surveys.Where(s => s.SurveyMeta.IsDismissed == false).ToList();
+        _surveys = new ObservableCollection<Questionnaire>(tempList);
+        return _surveys;
+      } 
+      set => _surveys = value;
+    }
 
     public SurveyListViewModel()
     {

@@ -40,8 +40,12 @@ namespace SurveyAnswererApp.Models {
       foreach (var survey in surveys)
       {
         var ns = surveyRestReader.ReadSingle(survey.Id.ToString()).Result;
+        
+        // Retrieval date
         ns.SurveyMeta.FirstRetrievalTime = DateTime.Now;
 
+        // TODO Skip if already in cache and ns.SurveyMeta.IsCompleted
+        
         foreach (var question in ns.Questions) {
           if (question.QuestionType == QuestionType.YES_NO) {
             // Yes/No hotfix

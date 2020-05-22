@@ -18,5 +18,11 @@ namespace SurveyAnswererApp.Views
       BindingContext = new SurveyDetailViewModel(questionnaire);
       InitializeComponent();
     }
+
+    private void DismissButton_OnClicked(object sender, EventArgs e) {
+      ((SurveyDetailViewModel) BindingContext).DismissCommand.Execute(this);
+
+    }
+
   }
 }
