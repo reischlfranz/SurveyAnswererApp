@@ -32,16 +32,24 @@ namespace SurveyAnswererApp.Models {
     private async void ReadFromRest()
     {
       Thread.Sleep(5000);
-      RestReader<Questionnaire> surveyRestReader =
-        new RestReader<Questionnaire>(
+      var surveyHotFixRestReader = new RestReader<QuestionnaireRestHotfix>(
           new Uri("http://www.birnbaua.at/jku/questionnaires/"));
-      var surveys = surveyRestReader.ReadMany("").Result;
+      var surveyRestReader = new RestReader<Questionnaire>(
+          new Uri("http://www.birnbaua.at/jku/questionnaires/"));
+      var surveys = surveyHotFixRestReader.ReadMany("").Result;
       foreach (var survey in surveys)
       {
-        var ns = await surveyRestReader.ReadSingle(survey.Id.ToString());
+        var ns = surveyRestReader.ReadSingle(survey.Id.ToString()).Result;
         ns.SurveyMeta.FirstRetrievalTime = DateTime.Now;
 
-        if (!surveys.Any(s => s.Id == ns.Id))
+        foreach (var question in ns.Questions) {
+          if (question.QuestionType == QuestionType.YES_NO) {
+            // Yes/No hotfix
+            question.QuestionType = QuestionType.SINGLE_CHOICE;
+          }
+        }
+
+        if (!Surveys.Any(s => s.Id == ns.Id))
         {
           Surveys.Add(ns);
         }
