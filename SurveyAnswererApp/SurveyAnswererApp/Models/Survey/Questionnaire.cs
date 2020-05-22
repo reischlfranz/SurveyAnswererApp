@@ -33,5 +33,6 @@ namespace SurveyAnswererApp.Models.Survey {
     // public Question[] Questions { get; set; }
     public List<Question> Questions{ get; set; } = new List<Question>();
 
+    public SurveyMeta SurveyMeta { get; set; } = new SurveyMeta();
   }
 }

@@ -23,7 +23,9 @@ namespace SurveyAnswererApp.ViewModels
 
       Surveys = Model.Instance.Surveys;
 
-      
+      Model.Instance.Wrapper();
+
+
     }
 
 
