@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              xmlns:style="clr-namespace:SurveyAnswererApp.Views.Style;assembly=SurveyAnswererApp"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.AnswerYesNoView">
@@ -15,18 +14,17 @@
     <StackLayout Orientation="Vertical"
                  HorizontalOptions="CenterAndExpand">
       <Label Text="{Binding Answer.AnswerText}"
-             HorizontalOptions="StartAndExpand"
+             HorizontalOptions="Center"
              />
-      <StackLayout Orientation="Horizontal">
-        
-        <input:RadioButtonGroupView
-          SelectedIndex="{Binding YesNoAnswerSelection}"
-          Orientation="Horizontal">
-          <input:RadioButton Text="Yes" 
-                             Style="{StaticResource YesAnswerRadioButton}" />
-          <input:RadioButton Text="No"
-                             Style="{StaticResource NoAnswerRadioButton}" />
-        </input:RadioButtonGroupView>
+      <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+        <RadioButton Text="Yes" 
+                     IsChecked="{Binding YesButtonSelected}"
+                     TextColor="Green"
+                     />
+        <RadioButton Text="No" 
+                     IsChecked="{Binding NoButtonSelected}"
+                     TextColor="Red"
+                     />
       </StackLayout>
     </StackLayout>
   </ContentView.Content>

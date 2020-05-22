@@ -27,7 +27,7 @@ namespace SurveyAnswererApp.Test {
       foreach (var question in _questionnaire.Questions) {
         Assert.IsNotNull(question.QuestionType);
         Assert.IsNotNull(question.QuestionText);
-        Assert.IsTrue(question.Nr>0);
+        Assert.IsTrue(question.Id>0);
         Assert.IsTrue(question.Answers.Count>0);
       }
     }

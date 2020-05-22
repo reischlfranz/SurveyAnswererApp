@@ -17,19 +17,19 @@
   </ContentPage.Resources>
 
   <ContentPage.Content>
-    <StackLayout>
+    <StackLayout CascadeInputTransparent="True">
 
       <!-- Title bar -->
       <ContentView x:Name="QnTitleBarView"
-                   BackgroundColor="Accent">
-        <AbsoluteLayout>
+                   BackgroundColor="Accent"  CascadeInputTransparent="True">
+        <AbsoluteLayout CascadeInputTransparent="True">
           <Button Text="Close"
                   x:Name="ExitSurvey"
                   Clicked="ExitSurveyButton_OnClicked"
                   AbsoluteLayout.LayoutFlags="PositionProportional"
                   AbsoluteLayout.LayoutBounds="1.0,0.0,AutoSize,AutoSize"
                   >
-            <!--TODO Make this a X symbol-->
+            <!-- TODO Make this a X symbol -->
           </Button>
         </AbsoluteLayout>
       </ContentView>
@@ -38,7 +38,7 @@
              Style="{StaticResource TitleText}" />
 
       <!-- Questionnaire content -->
-      <RefreshView IsEnabled="False">
+      <!--<RefreshView IsEnabled="False">-->
         <ScrollView>
 
           <StackLayout VerticalOptions="CenterAndExpand"
@@ -62,7 +62,7 @@
           
           </StackLayout>
         </ScrollView>
-      </RefreshView>
+      <!--</RefreshView>-->
 
 
       <!-- Navigation -->

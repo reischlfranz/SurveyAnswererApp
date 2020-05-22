@@ -12,7 +12,9 @@ namespace SurveyAnswererApp.Models.Survey {
     private string _answerText = "";
     
     [JsonPropertyName("value")]
-    public string Value { get; set; }
+    public string Value { get; set; }    
+    [JsonPropertyName("id")]
+    public long Id { get; set; }
     [JsonPropertyName("min")]
     public string Min { get; set; }
     [JsonPropertyName("max")]

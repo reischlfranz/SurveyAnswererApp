@@ -18,7 +18,7 @@ namespace SurveyAnswererApp.Models {
       for (var i = 0; i < rand.Next(10)+5; i++) {
         var q = new Question() {
               QuestionType = (QuestionType)rand.Next(Enum.GetValues(typeof(QuestionType)).Length),
-              Nr = survey.Id + i,
+              Id = survey.Id + i,
               QuestionText = GetRandomString(75)
         };
         for (var j = 0; j < rand.Next(6)+1; j++) {

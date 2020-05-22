@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
-using Plugin.InputKit.Shared.Controls;
 using SurveyAnswererApp.Models.Survey;
-using SurveyAnswererApp.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace SurveyAnswererApp.ViewModels
 {
@@ -34,6 +29,22 @@ namespace SurveyAnswererApp.ViewModels
       {
         _yesNoAnswerSelection = value;
         Answer.Value = value == 0 ? "Yes" : "No";
+      }
+    }
+    public bool YesButtonSelected {
+      get => YesNoAnswerSelection == 0;
+      set {
+        if (value) {
+          YesNoAnswerSelection = 0;
+        }
+      }
+    }
+    public bool NoButtonSelected {
+      get => YesNoAnswerSelection == 1;
+      set {
+        if (value) {
+          YesNoAnswerSelection = 1;
+        }
       }
     }
 
@@ -64,10 +75,9 @@ namespace SurveyAnswererApp.ViewModels
         RaiseAllPropertiesChanged();
       }
     }
-    // Hotfix: Binding value to RadioButton.IsChecked does not work.
-    // Keeping reference to manipulate manually
-    public RadioButton SingleChoiceSelectionRadioButton { get; set; }
 
+    public string RadioButtonGroupName { get; private set; }
+    
     private int _numberAnswerValue;
     public int NumberAnswerValue
     {
@@ -119,6 +129,7 @@ namespace SurveyAnswererApp.ViewModels
     {
       _questionViewModel = questionViewModel;
       _questionViewModel.AnswerViewModels.Add(this);
+      RadioButtonGroupName = "group" + questionViewModel.Question.Id;
 
       SingleChoiceAnswerChangedCommand = new Command(
         e => ExecuteSingleChoiceAnswerChangedCommand(e, EventArgs.Empty), 

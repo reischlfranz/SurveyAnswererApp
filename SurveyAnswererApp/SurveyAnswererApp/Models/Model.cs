@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Text.Json;
+using System.Linq;
+using System.Threading;
 using SurveyAnswererApp.Models.Survey;
+using SurveyAnswererApp.Services;
 
 namespace SurveyAnswererApp.Models {
   public class Model {
@@ -17,47 +15,49 @@ namespace SurveyAnswererApp.Models {
     public static Model Instance { get; } = new Model();
 
     private Model() {
-      
-      ReadRestSurvey();
-      
+
       for (int i = 0; i < 4; i++) {
         Surveys.Add(DummySurveyFactory.GetSurvey());
       }
-      
+
     }
 
-    private async Task ReadRestSurvey() {
-      var _client = new HttpClient();
-      _client.BaseAddress = new Uri("http://www.birnbaua.at/jku/");
-      try {
-        Task<Stream> httpGetTask = _client.GetStreamAsync("questionnaires");
-        var surveys = await JsonSerializer.DeserializeAsync<List<Questionnaire>>(await httpGetTask);
-        foreach (var survey in surveys) {
-          Surveys.Add(await ReadSurvey(survey.Id));
+    public void Wrapper()
+    {
+      Thread readThread = new Thread(() => ReadFromRest());
+      readThread.Start();      
+    }
+
+
+    private async void ReadFromRest()
+    {
+      Thread.Sleep(5000);
+      var surveyHotFixRestReader = new RestReader<QuestionnaireRestHotfix>(
+          new Uri("http://www.birnbaua.at/jku/questionnaires/"));
+      var surveyRestReader = new RestReader<Questionnaire>(
+          new Uri("http://www.birnbaua.at/jku/questionnaires/"));
+      var surveys = surveyHotFixRestReader.ReadMany("").Result;
+      foreach (var survey in surveys)
+      {
+        var ns = surveyRestReader.ReadSingle(survey.Id.ToString()).Result;
+        ns.SurveyMeta.FirstRetrievalTime = DateTime.Now;
+
+        foreach (var question in ns.Questions) {
+          if (question.QuestionType == QuestionType.YES_NO) {
+            // Yes/No hotfix
+            question.QuestionType = QuestionType.SINGLE_CHOICE;
+          }
         }
-      }
-      catch (Exception e) {
-        Console.WriteLine(e);
-        throw;
+
+        if (!Surveys.Any(s => s.Id == ns.Id))
+        {
+          Surveys.Add(ns);
+        }
+
+        Thread.Sleep(2000); // Add a delay for visual feedback
+
       }
     }
 
-    private async Task<Questionnaire> ReadSurvey(long id) {
-      var _client = new HttpClient();
-      _client.BaseAddress = new Uri("http://www.birnbaua.at/jku/");
-      try {
-        Task<Stream> httpGetTask = _client.GetStreamAsync("questionnaires/" + id);
-
-        var survey = await JsonSerializer.DeserializeAsync<Questionnaire>(await httpGetTask);
-        return survey;
-      }
-      catch (Exception e) {
-        Console.WriteLine(e);
-        throw;
-        return null;
-      }
-    }
-    
-    
   }
 }
