@@ -6,7 +6,6 @@
              xmlns:d="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              xmlns:style="clr-namespace:SurveyAnswererApp.Views.Style;assembly=SurveyAnswererApp"
              x:Class="SurveyAnswererApp.Views.AnswerSingleChoiceView">
   <ContentView.Resources>
@@ -15,20 +14,11 @@
   <ContentView.Content>
     <StackLayout Orientation="Horizontal">
 
-      <!-- SyncFusion RadioButton (Payed license, stupendously expensive) -->
-      <!--<sf:SfRadioButton Text="{Binding Answer.AnswerText}"
-                        x:Name="SingleChoiceSelection"
-                        IsChecked="{Binding SingleChoiceAnswerSelection}"
-                        />-->
 
-      <!-- InputKit RadioButton -->
-      <!-- Note: Does not update, does not fire command. Hotfix -->
-      <input:RadioButton Text="{Binding Answer.AnswerText}"
-                         x:Name="SingleChoiceSelection" 
-                         Style="{StaticResource AnswerRadioButton}"
-                         Clicked="SingleChoiceSelection_OnClicked"
-                         HorizontalOptions="FillAndExpand"
-                         />
+      <RadioButton Text="{Binding Answer.AnswerText}"
+                   IsChecked="{Binding SingleChoiceAnswerSelection}"
+                   GroupName="{Binding RadioButtonGroupName}"
+                   HorizontalOptions="FillAndExpand" />
 
     </StackLayout>
   </ContentView.Content>

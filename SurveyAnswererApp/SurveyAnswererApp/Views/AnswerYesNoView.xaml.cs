@@ -23,7 +23,7 @@ namespace SurveyAnswererApp.Views {
 
     private void YesButton_OnCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-      if (((CheckBox)sender).IsChecked)
+      if (((RadioButton)sender).IsChecked)
       {
         // noButton.IsChecked = false;
       }
@@ -32,7 +32,7 @@ namespace SurveyAnswererApp.Views {
 
     private void NoButton_OnCheckedChanged(object sender, CheckedChangedEventArgs e)
     {
-      if (((CheckBox)sender).IsChecked)
+      if (((RadioButton)sender).IsChecked)
       {
         // yesButton.IsChecked = false;
       }
