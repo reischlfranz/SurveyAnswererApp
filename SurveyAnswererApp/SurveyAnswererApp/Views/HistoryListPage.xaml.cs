@@ -17,17 +17,6 @@ namespace SurveyAnswererApp.Views
     public HistoryListPage()
     {
       InitializeComponent();
-
-      Items = new ObservableCollection<string>
-            {
-                "Item 1",
-                "Item 2",
-                "Item 3",
-                "Item 4",
-                "Item 5"
-            };
-
-      MyListView.ItemsSource = Items;
     }
 
     async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)

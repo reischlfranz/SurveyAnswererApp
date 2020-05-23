@@ -15,7 +15,7 @@ namespace SurveyAnswererApp.Models {
     public static Model Instance { get; } = new Model();
 
     private Model() {
-
+      
       for (int i = 0; i < 4; i++) {
         Surveys.Add(DummySurveyFactory.GetSurvey());
       }
@@ -56,6 +56,7 @@ namespace SurveyAnswererApp.Models {
         if (!Surveys.Any(s => s.Id == ns.Id))
         {
           Surveys.Add(ns);
+          
         }
 
         Thread.Sleep(2000); // Add a delay for visual feedback

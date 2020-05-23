@@ -111,6 +111,10 @@ namespace SurveyAnswererApp.ViewModels {
 
       if (doSend)
       {
+        // TODO Move this to proper REST send method
+        Questionnaire.SurveyMeta.IsCompleted = true;
+        Questionnaire.SurveyMeta.SentDate = DateTime.Now;
+        
         await ((Page)sender).Navigation.PushAsync(new QuestionnaireSummaryPage());
         return;
       }
