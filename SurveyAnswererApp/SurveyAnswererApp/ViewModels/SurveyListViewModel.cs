@@ -8,8 +8,8 @@ using Xamarin.Forms;
 
 namespace SurveyAnswererApp.ViewModels
 {
-  public class SurveyListViewModel : BaseViewModel
-  {
+  public class SurveyListViewModel : BaseViewModel {
+    
     private ObservableCollection<Questionnaire> _surveys;
     public ObservableCollection<Questionnaire> Surveys {
       get {
@@ -21,8 +21,23 @@ namespace SurveyAnswererApp.ViewModels
     }
 
     private void SurveyCollectionChanged(object sender, NotifyCollectionChangedEventArgs args) {
-
-      Console.Out.WriteLine("  >>> >>> >>> # Collection updated!!! # <<< <<< <<< ");
+      if(sender == null) return;
+      var parentSurveys = (ObservableCollection<Questionnaire>) sender; 
+      foreach (var q in  parentSurveys) {
+        if (!AvailableSurveys.Contains(q) &&
+            !q.SurveyMeta.IsCompleted && 
+            !q.SurveyMeta.IsDismissed) {
+          AvailableSurveys.Add(q);
+        }
+      }
+      foreach (var q in AvailableSurveys) {
+        if (!parentSurveys.Contains(q) ||
+            q.SurveyMeta.IsCompleted ||
+            q.SurveyMeta.IsDismissed) {
+          AvailableSurveys.Remove(q);
+        }
+      }
+ 
       RaisePropertyChanged();
     }
 
@@ -43,9 +58,7 @@ namespace SurveyAnswererApp.ViewModels
             select item);
 
       Model.Instance.Surveys.CollectionChanged += this.SurveyCollectionChanged;
-      AvailableSurveys.CollectionChanged += this.SurveyCollectionChanged;
       Model.Instance.Wrapper();
-      RaisePropertyChanged();
 
 
     }
