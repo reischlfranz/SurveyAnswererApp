@@ -22,18 +22,19 @@
       <!--Built in Cells-->
       <ListView.ItemTemplate>
         <DataTemplate>
-          <!--<TapGestureRecognizer Command="{Binding .}">-->
-          <!--<TapGestureRecognizer.LogicalChildren>-->
           <ViewCell>
-            <StackLayout>
-              <Label Text="{Binding Title}"
-                     d:Text="{Binding Title}" />
-              <Label Text="{Binding SurveyMeta.SentDate, StringFormat=Sent on \{0\}}"
-                     d:Text="{Binding SurveyMeta.SentDate, StringFormat=Sent on \{0\}}" />
-            </StackLayout>
+            <!-- <ContentView> -->
+            <!--   <ContentView.GestureRecognizers> -->
+            <!--     <TapGestureRecognizer Command="{Binding ListItemSelectCommand}" /> -->
+            <!--   </ContentView.GestureRecognizers> -->
+              <StackLayout>
+                <Label Text="{Binding Title}"
+                       d:Text="{Binding Title}" />
+                <Label Text="{Binding SurveyMeta.SentDate, StringFormat=Sent on \{0\}}"
+                       d:Text="{Binding SurveyMeta.SentDate, StringFormat=Sent on \{0\}}" />
+              </StackLayout>
+            <!-- </ContentView> -->
           </ViewCell>
-          <!--</TapGestureRecognizer.LogicalChildren>-->
-          <!--</TapGestureRecognizer>-->
         </DataTemplate>
       </ListView.ItemTemplate>
 

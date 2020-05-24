@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-
+using SurveyAnswererApp.Models.Survey;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -25,10 +25,15 @@ namespace SurveyAnswererApp.Views
         return;
 
       //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-      await Navigation.PushAsync(new HistoryDetailPage());
+
+      ListView selection = (ListView) sender;
+      Questionnaire selectedQuestionnaire = (Questionnaire) selection.SelectedItem;
+
+      await Navigation.PushAsync(new HistoryDetailPage(selectedQuestionnaire));
 
       //Deselect Item
       ((ListView)sender).SelectedItem = null;
     }
+
   }
 }

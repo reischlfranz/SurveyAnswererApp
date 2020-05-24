@@ -15,11 +15,19 @@ namespace SurveyAnswererApp.Models {
     public static Model Instance { get; } = new Model();
 
     private Model() {
-      
+
       for (int i = 0; i < 4; i++) {
         Surveys.Add(DummySurveyFactory.GetSurvey());
       }
 
+      // Add history
+      for (int i = 0; i < 2; i++) {
+        var historySurvey = DummySurveyFactory.GetSurvey();
+        historySurvey.SurveyMeta.IsCompleted = true;
+        historySurvey.SurveyMeta.SentDate = DateTime.Now;
+        historySurvey.SurveyMeta.FirstRetrievalTime = DateTime.Now.Subtract(TimeSpan.FromDays(2));
+        Surveys.Add(historySurvey);
+      }
     }
 
     public void Wrapper()
