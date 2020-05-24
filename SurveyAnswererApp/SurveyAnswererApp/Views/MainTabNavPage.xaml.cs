@@ -14,6 +14,7 @@ namespace SurveyAnswererApp.Views
   {
     public MainTabNavPage()
     {
+      NavigationPage.SetHasNavigationBar(this, false);
       InitializeComponent();
     }
   }
