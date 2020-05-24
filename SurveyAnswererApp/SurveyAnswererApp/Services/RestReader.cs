@@ -31,8 +31,8 @@ namespace SurveyAnswererApp.Services
       try
       {
         Task<Stream> httpGetTask = _client.GetStreamAsync(url);
-        var results = JsonSerializer.DeserializeAsync<List<T>>(await httpGetTask);
-        return results.Result;
+        var results = JsonSerializer.DeserializeAsync<List<T>>(httpGetTask.GetAwaiter().GetResult());
+        return results.GetAwaiter().GetResult();
       }
       catch (Exception e)
       {
@@ -46,7 +46,9 @@ namespace SurveyAnswererApp.Services
       try
       {
         Task<Stream> httpGetTask = _client.GetStreamAsync(url);
-        var result = await JsonSerializer.DeserializeAsync<T>(await httpGetTask);
+        var result = JsonSerializer.DeserializeAsync<T>(httpGetTask.GetAwaiter().GetResult())
+              .GetAwaiter()
+              .GetResult();
         return result;
       }
       catch (Exception e)
