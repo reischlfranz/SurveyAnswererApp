@@ -18,7 +18,8 @@ namespace SurveyAnswererApp
    
     public App()
     {
-      if(_instance != null) return;
+      Device.SetFlags(new string[] { "RadioButton_Experimental" });
+      if (_instance != null) return;
       InitializeComponent();
       
       DependencyService.Register<MockDataStore>();
