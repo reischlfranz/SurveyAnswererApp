@@ -85,7 +85,7 @@ namespace SurveyAnswererApp.ViewModels {
       if (CurrentPageIndex + ITEMS_PER_PAGE > Questionnaire.Questions.Count) return;
       Questions.Clear();
       CurrentPageIndex += ITEMS_PER_PAGE;
-      for (int i = CurrentPageIndex; i < (CurrentPageIndex + ITEMS_PER_PAGE) && i < Questionnaire.Questions.Count - 1; i++)
+      for (int i = CurrentPageIndex; i < (CurrentPageIndex + ITEMS_PER_PAGE) && i < Questionnaire.Questions.Count; i++)
       {
         Questions.Add(Questionnaire.Questions[i]);
       }
@@ -97,7 +97,7 @@ namespace SurveyAnswererApp.ViewModels {
       CurrentPageIndex -= ITEMS_PER_PAGE;
       if (CurrentPageIndex < 0) CurrentPageIndex = 0;
       Questions.Clear();
-      for (int i = CurrentPageIndex; i < CurrentPageIndex + ITEMS_PER_PAGE && i < Questionnaire.Questions.Count - 1; i++)
+      for (int i = CurrentPageIndex; i < CurrentPageIndex + ITEMS_PER_PAGE && i < Questionnaire.Questions.Count; i++)
       {
         Questions.Add(Questionnaire.Questions[i]);
       }
