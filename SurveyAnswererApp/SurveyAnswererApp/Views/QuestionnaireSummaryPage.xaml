@@ -6,19 +6,147 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.QuestionnaireSummaryPage">
+  <NavigationPage.TitleView>
+    <StackLayout Orientation="Horizontal"
+                 HorizontalOptions="FillAndExpand">
+      <Label Text="Survey Summary" />
+    </StackLayout>
+  </NavigationPage.TitleView>
   <ContentPage.Content>
     <StackLayout>
-      <BoxView VerticalOptions="StartAndExpand" />
-      <Label Text="(ContentPage) QuestionnaireSummaryPage"
-             VerticalOptions="Center"
-             HorizontalOptions="CenterAndExpand" />
-      <Label Text="This is the summary of the survey answers you selected and will be sent to the server."
-             VerticalOptions="Center"
-             HorizontalOptions="CenterAndExpand" />
-      <Label Text="Further text is lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-             VerticalOptions="Center"
-             HorizontalOptions="CenterAndExpand" />
-      <BoxView VerticalOptions="EndAndExpand" />
+    <ScrollView VerticalOptions="FillAndExpand"
+                Padding="15,10,25,10">
+      <StackLayout>
+        <Label Text="{Binding Questionnaire.Title}"
+               FontSize="Large" />
+        <Label Text="Check your answers before sending:" 
+               HorizontalOptions="EndAndExpand"/>
+        <!-- Divider -->
+        <BoxView WidthRequest="1"
+                 HeightRequest="4"
+                 BackgroundColor="LightSlateGray" />
+        <!-- Put stuff here -->
+        <Label Text="{Binding Questionnaire.Questions.Count, StringFormat=\{0\} Questions:}"
+               HorizontalOptions="Start"
+               FontSize="Large"/>
+        <!-- <Label Text="{Binding Questionnaire.Questions.Count}" /> -->
+        <StackLayout VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"
+                     BindableLayout.ItemsSource="{Binding Questionnaire.Questions}">
+          <BindableLayout.ItemTemplate>
+            <DataTemplate>
+              <StackLayout BackgroundColor="LightGray"
+                           HorizontalOptions="FillAndExpand"
+                           Margin="10,0,10,15">
+                <StackLayout Orientation="Horizontal"
+                             Margin="10,3,10,0">
+
+                  <Label Text="{Binding QuestionText}"
+                         HorizontalOptions="StartAndExpand" 
+                         VerticalOptions="Center"
+                         />
+                  <Label Text="{Binding QuestionType, StringFormat=Type: \{0\}}"
+                         FontSize="Small"
+                         FontAttributes="Italic"
+                         TextColor="Gray"
+                         HorizontalOptions="End"
+                         VerticalOptions="Center"/>
+                </StackLayout>
+                <StackLayout BindableLayout.ItemsSource="{Binding Answers}"
+                             BackgroundColor="WhiteSmoke"
+                             Margin="10,0,0,0">
+                  <Label Text="Answers" />
+                  <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                      <StackLayout Margin="5,2,5,0">
+                        <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding AnswerText}"
+                               HorizontalOptions="StartAndExpand"
+                               TextColor="Gray" />
+                        <Label Text="{Binding Id, StringFormat=Answer ID #\{0\}}"
+                               FontSize="Small"
+                               TextColor="LightGray"
+                               HorizontalOptions="End" />
+                        </StackLayout>
+                        <Label Text="{Binding Value, StringFormat=Value: \{0\}}"
+                               TextColor="Green" />
+                      </StackLayout>
+
+                    </DataTemplate>
+                  </BindableLayout.ItemTemplate>
+                </StackLayout>
+              </StackLayout>
+            </DataTemplate>
+          </BindableLayout.ItemTemplate>
+        </StackLayout>
+
+        <!-- Put stuff here -->
+        <BoxView WidthRequest="1"
+                 HeightRequest="4"
+                 BackgroundColor="LightSlateGray" />
+        <Grid>
+          <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="6*" />
+          </Grid.ColumnDefinitions>
+          <Label Grid.Row="0"
+                 Grid.ColumnSpan="2"
+                 Text="Survey details:"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 FontSize="Subtitle" />
+          <Label Grid.Row="1"
+                 Grid.Column="0"
+                 Text="Created on: "
+                 Padding="10,0,0,0"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand" />
+          <Label Grid.Row="2"
+                 Grid.Column="0"
+                 Text="Downloaded on: "
+                 Padding="10,0,0,0"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand" />
+          <Label Grid.Row="3"
+                 Grid.Column="0"
+                 Padding="10,0,0,0"
+                 VerticalOptions="Center"
+                 HorizontalOptions="FillAndExpand"
+                 Text="Survey ID: " />
+
+          <Label Grid.Row="1"
+                 Grid.Column="1"
+                 Text="{Binding CreatedDate}"
+                 VerticalOptions="CenterAndExpand" />
+          <Label Grid.Row="2"
+                 Grid.Column="1"
+                 Text="{Binding Questionnaire.SurveyMeta.FirstRetrievalTime}"
+                 VerticalOptions="CenterAndExpand" />
+          <Label Grid.Row="3"
+                 Grid.Column="1"
+                 Text="{Binding Questionnaire.Id}"
+                 VerticalOptions="CenterAndExpand" />
+
+          <!-- <BoxView Grid.Row="3" -->
+          <!--          Grid.Column="1" -->
+          <!--          BackgroundColor="Chocolate"  -->
+          <!--          /> -->
+
+        </Grid>
+        <BoxView WidthRequest="1"
+                 HeightRequest="4"
+                 BackgroundColor="LightSlateGray" />
+
+
+      </StackLayout>
+    </ScrollView>
+
       <Button Text="Send" x:Name="SendSurveyButton" Clicked="SendSurveyButton_OnClicked" />
     </StackLayout>
   </ContentPage.Content>

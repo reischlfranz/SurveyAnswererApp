@@ -115,7 +115,7 @@ namespace SurveyAnswererApp.ViewModels {
         Questionnaire.SurveyMeta.IsCompleted = true;
         Questionnaire.SurveyMeta.SentDate = DateTime.Now;
         
-        await ((Page)sender).Navigation.PushAsync(new QuestionnaireSummaryPage());
+        await ((Page)sender).Navigation.PushAsync(new QuestionnaireSummaryPage(Questionnaire));
         return;
       }
     }
