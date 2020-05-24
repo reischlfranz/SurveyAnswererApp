@@ -8,6 +8,7 @@
              xmlns:vm="clr-namespace:SurveyAnswererApp.ViewModels;assembly=SurveyAnswererApp"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.HistoryListPage"
+             IconImageSource="{x:OnPlatform iOS='tab_feed.png', Android='tab_feed.png'}"
              Title="History">
   <ContentPage.BindingContext>
     <vm:HistoryListViewModel />
