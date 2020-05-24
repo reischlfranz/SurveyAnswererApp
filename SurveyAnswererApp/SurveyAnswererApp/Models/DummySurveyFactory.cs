@@ -23,7 +23,8 @@ namespace SurveyAnswererApp.Models {
         };
         for (var j = 0; j < rand.Next(6)+1; j++) {
           var a = new Answer() {
-                AnswerText = GetRandomString(8+rand.Next(20))
+                AnswerText = GetRandomString(8+rand.Next(20)),
+                Id = (long) q.Id * 10 + j
           };
           q.Answers.Add(a);
         }
