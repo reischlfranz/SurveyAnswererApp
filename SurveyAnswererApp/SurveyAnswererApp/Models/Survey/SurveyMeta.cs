@@ -18,6 +18,9 @@ namespace SurveyAnswererApp.Models.Survey
     // Has been completed - Can be / has been sent
     public bool IsCompleted { get; set; }
     
+    // Has been dismissed - Do not show in list anymore
+    public bool IsDismissed { get; set; }
+
     public SurveyMeta()
     {
       

@@ -8,13 +8,14 @@
              x:Class="SurveyAnswererApp.Views.AboutPage"
              
              xmlns:vm="clr-namespace:SurveyAnswererApp.ViewModels"
+             IconImageSource="{x:OnPlatform iOS='tab_about.png', Android='tab_about.png'}"
              Title="{Binding Title}">
-    
-    <ContentPage.BindingContext>
+
+  <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-    
-    <ContentPage.Resources>
+
+  <ContentPage.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
             <Color x:Key="Accent">#96d1ff</Color>

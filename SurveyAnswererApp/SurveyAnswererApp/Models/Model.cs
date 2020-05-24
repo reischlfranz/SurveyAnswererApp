@@ -20,6 +20,14 @@ namespace SurveyAnswererApp.Models {
         Surveys.Add(DummySurveyFactory.GetSurvey());
       }
 
+      // Add history
+      for (int i = 0; i < 2; i++) {
+        var historySurvey = DummySurveyFactory.GetSurvey();
+        historySurvey.SurveyMeta.IsCompleted = true;
+        historySurvey.SurveyMeta.SentDate = DateTime.Now;
+        historySurvey.SurveyMeta.FirstRetrievalTime = DateTime.Now.Subtract(TimeSpan.FromDays(2));
+        Surveys.Add(historySurvey);
+      }
     }
 
     public void Wrapper()
@@ -40,8 +48,12 @@ namespace SurveyAnswererApp.Models {
       foreach (var survey in surveys)
       {
         var ns = surveyRestReader.ReadSingle(survey.Id.ToString()).Result;
+        
+        // Retrieval date
         ns.SurveyMeta.FirstRetrievalTime = DateTime.Now;
 
+        // TODO Skip if already in cache and ns.SurveyMeta.IsCompleted
+        
         foreach (var question in ns.Questions) {
           if (question.QuestionType == QuestionType.YES_NO) {
             // Yes/No hotfix
@@ -52,6 +64,7 @@ namespace SurveyAnswererApp.Models {
         if (!Surveys.Any(s => s.Id == ns.Id))
         {
           Surveys.Add(ns);
+          
         }
 
         Thread.Sleep(2000); // Add a delay for visual feedback

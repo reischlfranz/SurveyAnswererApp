@@ -7,7 +7,9 @@
              xmlns:vm="clr-namespace:SurveyAnswererApp.ViewModels"
              mc:Ignorable="d"
              x:Class="SurveyAnswererApp.Views.SurveyListPage"
-             Title="Surveys">
+             Title="Surveys" 
+             IconImageSource="{x:OnPlatform iOS='tab_feed.png', Android='tab_feed'}"
+             >
 
   <ContentPage.BindingContext>
     <vm:SurveyListViewModel />
@@ -18,7 +20,7 @@
     <ListView x:Name="MyListView"
               ItemTapped="Handle_ItemTapped"
               CachingStrategy="RecycleElement" 
-              ItemsSource="{Binding Surveys}"
+              ItemsSource="{Binding AvailableSurveys}"
               >
       <!--Built in Cells-->
       <ListView.ItemTemplate>
