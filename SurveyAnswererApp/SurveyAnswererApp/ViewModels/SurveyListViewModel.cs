@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
+using System.Windows.Input;
 using SurveyAnswererApp.Models;
 using SurveyAnswererApp.Models.Survey;
+using SurveyAnswererApp.Views;
 using Xamarin.Forms;
 
 namespace SurveyAnswererApp.ViewModels
@@ -22,26 +25,42 @@ namespace SurveyAnswererApp.ViewModels
 
     private void SurveyCollectionChanged(object sender, NotifyCollectionChangedEventArgs args) {
       if(sender == null) return;
-      var parentSurveys = (ObservableCollection<Questionnaire>) sender; 
-      foreach (var q in  parentSurveys) {
-        if (!AvailableSurveys.Contains(q) &&
-            !q.SurveyMeta.IsCompleted && 
-            !q.SurveyMeta.IsDismissed) {
-          AvailableSurveys.Add(q);
-        }
-      }
-      foreach (var q in AvailableSurveys) {
-        if (!parentSurveys.Contains(q) ||
-            q.SurveyMeta.IsCompleted ||
-            q.SurveyMeta.IsDismissed) {
-          AvailableSurveys.Remove(q);
-        }
-      }
- 
+      UpdateAvailableSurveys();
+
       RaisePropertyChanged();
     }
 
+    public void UpdateAvailableSurveys()
+    {
+      object sender;
+      var parentSurveys = Model.Instance.Surveys;
+
+
+      foreach (var q in parentSurveys)
+      {
+        if (!AvailableSurveys.Contains(q) &&
+            !q.SurveyMeta.IsCompleted &&
+            !q.SurveyMeta.IsDismissed)
+        {
+          // Execute on UI thread; BindableLayout is not as forgiving as ListView
+          Device.BeginInvokeOnMainThread(() => AvailableSurveys.Add(q));
+        }
+      }
+
+      foreach (var q in AvailableSurveys)
+      {
+        if (!parentSurveys.Contains(q) ||
+            q.SurveyMeta.IsCompleted ||
+            q.SurveyMeta.IsDismissed)
+        {
+          Device.BeginInvokeOnMainThread(() => AvailableSurveys.Remove(q));
+        }
+      }
+    }
+
     public ObservableCollection<Questionnaire> AvailableSurveys{ get; set; }
+
+    public ICommand SurveySelectedCommand { get; private set; }
 
     public SurveyListViewModel()
     {
@@ -50,20 +69,32 @@ namespace SurveyAnswererApp.ViewModels
       //   Surveys.Add(survey);
       // }
 
-      // Surveys = Model.Instance.Surveys;
+      //Surveys = Model.Instance.Surveys;
       AvailableSurveys = new ObservableCollection<Questionnaire>(
-            from item in (Model.Instance.Surveys) 
-            where !item.SurveyMeta.IsCompleted && !item.SurveyMeta.IsDismissed  
-            orderby item.Id 
+            from item in (Model.Instance.Surveys)
+            where !item.SurveyMeta.IsCompleted && !item.SurveyMeta.IsDismissed
+            orderby item.Id
             select item);
 
+      UpdateAvailableSurveys();
       Model.Instance.Surveys.CollectionChanged += this.SurveyCollectionChanged;
       Model.Instance.Wrapper();
 
+      SurveySelectedCommand = new Command(e => ExecuteSurveySelectedCommand(e, EventArgs.Empty));
 
     }
 
+    private async void ExecuteSurveySelectedCommand(object sender, EventArgs e)
+    {
+      if (sender == null)
+        return;
 
-    
+      Questionnaire selectedQuestionnaire = (Questionnaire)sender;
+
+      await App.Instance.Navigation.PushAsync(new SurveyDetailPage(selectedQuestionnaire));
+
+    }
+     
+
   }
 }

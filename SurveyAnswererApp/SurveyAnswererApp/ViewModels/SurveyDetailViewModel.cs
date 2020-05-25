@@ -39,7 +39,7 @@ namespace SurveyAnswererApp.ViewModels
       {
         // TODO Dismiss the survey
         Questionnaire.SurveyMeta.IsDismissed = true;
-        
+
         await ((Page)sender).Navigation.PopAsync();
         
         return;

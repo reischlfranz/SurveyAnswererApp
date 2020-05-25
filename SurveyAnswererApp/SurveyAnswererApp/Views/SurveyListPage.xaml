@@ -12,47 +12,49 @@
              >
 
   <ContentPage.BindingContext>
-    <vm:SurveyListViewModel />
+    <vm:SurveyListViewModel  x:Name="SurveyListViewContext"/>
   </ContentPage.BindingContext>
 
-  <StackLayout>
-    <Label VerticalOptions="Start">SurveyListPage</Label>
-    <ListView x:Name="MyListView"
-              ItemTapped="Handle_ItemTapped"
-              CachingStrategy="RecycleElement" 
-              ItemsSource="{Binding AvailableSurveys}"
-              >
-      <!--Built in Cells-->
-      <ListView.ItemTemplate>
-        <DataTemplate>
-          <!--<TapGestureRecognizer Command="{Binding .}">-->
-          <!--<TapGestureRecognizer.LogicalChildren>-->
-          <ViewCell>
-            <Label Text="{Binding .Title}" />
-            <!-- TODO Raise property Changed to show correct entries -->
-          </ViewCell>
-          <!--</TapGestureRecognizer.LogicalChildren>-->
-          <!--</TapGestureRecognizer>-->
-        </DataTemplate>
-      </ListView.ItemTemplate>
+  <StackLayout Margin="10,15,10,20">
+    <Label VerticalOptions="Start"
+           FontSize="40">Available surveys</Label>
+    <BoxView WidthRequest="1"
+             HeightRequest="4"
+             BackgroundColor="LightSlateGray" />
+    <ScrollView HorizontalOptions="FillAndExpand"
+                VerticalOptions="Start"
+                VerticalScrollBarVisibility="Default"
+                HorizontalScrollBarVisibility="Default">
+      <!-- NOTE Scrollbars on Android not visible - Bug in Xamarin.Forms 4.* - expected to be fixed with 4.7 -->
+      <StackLayout
+        BindableLayout.ItemsSource="{Binding AvailableSurveys}">
+        <BindableLayout.ItemTemplate>
+          <DataTemplate>
 
-      <!--Custom View Cells-->
-      <!--
-    <ListView.ItemTemplate>
-      <DataTemplate>
-        <ViewCell>
-          <StackLayout>
-            <Label Text="{Binding Text}" 
-                   d:Text="{Binding .}"
-                   Style="{DynamicResource ListItemTextStyle}" />
-            <Label Text="{Binding Detail}" 
-                   d:Text="Detail"
-                   Style="{DynamicResource ListItemDetailTextStyle}"/>
-          </StackLayout>
-        </ViewCell>
-      </DataTemplate>
-    </ListView.ItemTemplate>
-    -->
-    </ListView>
+            <Frame
+              Padding="3"
+              CornerRadius="5"
+              BackgroundColor="FloralWhite"
+              Margin="5,5,5,5"
+              HasShadow="True"
+              BorderColor="SlateGray">
+              <Label Text="{Binding .Title, StringFormat=❓😇 \{0\}}" 
+                     FontSize="Medium"
+                     Margin="20,15,20,15" 
+                     VerticalOptions="Center" />
+              <Frame.GestureRecognizers>
+                <TapGestureRecognizer
+                  Command="{Binding  
+                    Path=SurveySelectedCommand,
+                    Source={x:Reference SurveyListViewContext}
+                    }"
+                  CommandParameter="{Binding .}"
+                  />
+              </Frame.GestureRecognizers>
+            </Frame>
+          </DataTemplate>
+        </BindableLayout.ItemTemplate>
+      </StackLayout>
+    </ScrollView>
   </StackLayout>
 </ContentPage>
