@@ -26,7 +26,8 @@ namespace SurveyAnswererApp.Views
 
       if (doExit)
       {
-        App.Instance.MainPage = new NavigationPage(new MainTabNavPage());
+        App.Instance.SetMainPage(new NavigationPage(new MainTabNavPage()));
+        
         return;
       }
     }

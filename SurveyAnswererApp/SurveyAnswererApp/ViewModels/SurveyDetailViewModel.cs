@@ -26,7 +26,7 @@ namespace SurveyAnswererApp.ViewModels
 
     private void ExecuteOpenSurveyCommand(object sender, EventArgs args)
     {
-      App.Instance.MainPage = new NavigationPage(new QuestionnairePage(Questionnaire));
+      App.Instance.SetMainPage(new NavigationPage(new QuestionnairePage(Questionnaire)));
       
 
     }

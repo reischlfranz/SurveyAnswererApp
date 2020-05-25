@@ -29,6 +29,11 @@ namespace SurveyAnswererApp
       _instance = this;
     }
 
+    public void SetMainPage(Page newMainPage) {
+      MainPage = newMainPage;
+      Navigation = MainPage.Navigation;
+    }
+
     protected override void OnStart()
     {
     }
