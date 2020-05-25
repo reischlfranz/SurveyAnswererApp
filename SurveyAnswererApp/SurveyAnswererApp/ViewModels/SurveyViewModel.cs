@@ -10,6 +10,7 @@ namespace SurveyAnswererApp.ViewModels {
   public class SurveyViewModel : BaseViewModel {
 
     private const int ITEMS_PER_PAGE = 2;
+    private readonly int maxPage;
 
     public int CurrentPageIndex
     {
@@ -34,7 +35,7 @@ namespace SurveyAnswererApp.ViewModels {
     {
       get
       {
-        return "Page " + (CurrentPageIndex / ITEMS_PER_PAGE + 1) + " / " + (Questionnaire.Questions.Count / ITEMS_PER_PAGE);
+        return "Page " + (CurrentPageIndex / ITEMS_PER_PAGE + 1) + " / " + maxPage;
       }
     }
 
@@ -59,6 +60,9 @@ namespace SurveyAnswererApp.ViewModels {
       
       SurveyTitle = Questionnaire.Title;
       SurveyDescription = Questionnaire.Description;
+
+      maxPage = (int) Math.Ceiling((double) Questionnaire.Questions.Count / ITEMS_PER_PAGE);
+      
 
       // Populate first page
       ExecuteLastPageCommand(null, null);
