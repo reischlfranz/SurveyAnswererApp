@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Input;
 using SurveyAnswererApp.Models;
 using SurveyAnswererApp.Models.Survey;
+using SurveyAnswererApp.Views;
 using Xamarin.Forms;
 
 namespace SurveyAnswererApp.ViewModels
@@ -25,25 +26,22 @@ namespace SurveyAnswererApp.ViewModels
       }
     }
 
-    public ICommand ListItemSelectCommand;
+    public ICommand SurveySelectedCommand { get; private set; }
 
     public HistoryListViewModel() {
       HistoryHistorySurveys = Model.Instance.Surveys;
-      ListItemSelectCommand = new Command(
-            e => ExecuteListItemSelectCommand(e, EventArgs.Empty), 
-            e => CanExecuteListItemSelectCommand());
+      SurveySelectedCommand = new Command(
+            e => ExecuteSurveySelectedCommand(e, EventArgs.Empty));
     }
 
-    private bool CanExecuteListItemSelectCommand() {
-      return true;
-    }
+    private async void ExecuteSurveySelectedCommand(object sender, EventArgs args) {
+      if (sender == null)
+        return;
 
-    private async void ExecuteListItemSelectCommand(object sender, EventArgs args) {
-      if(sender.GetType() != typeof(Questionnaire)) { return; }
+      Questionnaire selectedQuestionnaire = (Questionnaire)sender;
 
-      var itemSelected = (Questionnaire) sender;
-      
-      Console.Out.WriteLine("Item selected: ");
+      await App.Instance.Navigation.PushAsync(new HistoryDetailPage(selectedQuestionnaire));
+
     }
           
     

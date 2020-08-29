@@ -14,8 +14,9 @@ namespace SurveyAnswererApp
       get { return _instance; }
     }
 
-    public Model Model{ get; } = Model.Instance; 
-   
+    public Model Model{ get; } = Model.Instance;
+    public INavigation Navigation { get; set; }
+
     public App()
     {
       Device.SetFlags(new string[] { "RadioButton_Experimental" });
@@ -24,7 +25,13 @@ namespace SurveyAnswererApp
       
       DependencyService.Register<MockDataStore>();
       MainPage = new NavigationPage(new MainTabNavPage());
+      Navigation = MainPage.Navigation;
       _instance = this;
+    }
+
+    public void SetMainPage(Page newMainPage) {
+      MainPage = newMainPage;
+      Navigation = MainPage.Navigation;
     }
 
     protected override void OnStart()

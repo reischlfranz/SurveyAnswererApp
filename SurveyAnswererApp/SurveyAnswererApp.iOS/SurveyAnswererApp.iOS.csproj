@@ -74,6 +74,7 @@
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
+    <Compile Include="MessagePopupIos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -148,5 +149,8 @@
       <Project>{C4E66EDB-D653-4391-9CA3-3C5204A84474}</Project>
       <Name>SurveyAnswererApp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services" />
   </ItemGroup>
 </Project>

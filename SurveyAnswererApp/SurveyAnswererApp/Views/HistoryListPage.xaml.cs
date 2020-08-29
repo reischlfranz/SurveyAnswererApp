@@ -19,21 +19,5 @@ namespace SurveyAnswererApp.Views
       InitializeComponent();
     }
 
-    async void Handle_ItemTapped(object sender, ItemTappedEventArgs e)
-    {
-      if (e.Item == null)
-        return;
-
-      //await DisplayAlert("Item Tapped", "An item was tapped.", "OK");
-
-      ListView selection = (ListView) sender;
-      Questionnaire selectedQuestionnaire = (Questionnaire) selection.SelectedItem;
-
-      await Navigation.PushAsync(new HistoryDetailPage(selectedQuestionnaire));
-
-      //Deselect Item
-      ((ListView)sender).SelectedItem = null;
-    }
-
   }
 }

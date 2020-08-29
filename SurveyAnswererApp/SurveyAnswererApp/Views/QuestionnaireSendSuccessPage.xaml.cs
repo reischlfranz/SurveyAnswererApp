@@ -18,7 +18,7 @@ namespace SurveyAnswererApp.Views
 
     private void BackToMainButton_OnClicked(object sender, EventArgs e)
     {
-      App.Instance.MainPage = new NavigationPage(new MainTabNavPage());
+      App.Instance.SetMainPage(new NavigationPage(new MainTabNavPage()));
     }
   }
 }

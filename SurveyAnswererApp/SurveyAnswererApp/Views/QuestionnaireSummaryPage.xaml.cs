@@ -21,10 +21,9 @@ namespace SurveyAnswererApp.Views
 
     private async void SendSurveyButton_OnClicked(object sender, EventArgs e)
     {
-      //App.Instance.MainPage = new NavigationPage(new MainTabNavPage());
       Page successPage = new QuestionnaireSendSuccessPage();
 
-      App.Instance.MainPage = new NavigationPage(successPage);
+      App.Instance.SetMainPage(new NavigationPage(successPage));
       //await Navigation.PushAsync(successPage);
       //Navigation.InsertPageBefore(new MainTabNavPage(), successPage);
     }

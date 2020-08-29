@@ -5,7 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              xmlns:views="clr-namespace:SurveyAnswererApp.Views;assembly=SurveyAnswererApp"
-             x:Class="SurveyAnswererApp.Views.MainTabNavPage">
+             x:Class="SurveyAnswererApp.Views.MainTabNavPage"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             >
   <!--Pages can be added as references or inline-->
 
   <!--<NavigationPage Title="SURVEYS">-->

@@ -26,7 +26,7 @@ namespace SurveyAnswererApp.ViewModels
 
     private void ExecuteOpenSurveyCommand(object sender, EventArgs args)
     {
-      App.Instance.MainPage = new NavigationPage(new QuestionnairePage(Questionnaire));
+      App.Instance.SetMainPage(new NavigationPage(new QuestionnairePage(Questionnaire)));
       
 
     }
@@ -39,7 +39,7 @@ namespace SurveyAnswererApp.ViewModels
       {
         // TODO Dismiss the survey
         Questionnaire.SurveyMeta.IsDismissed = true;
-        
+
         await ((Page)sender).Navigation.PopAsync();
         
         return;

@@ -10,9 +10,11 @@ namespace SurveyAnswererApp.ViewModels
     public AboutViewModel()
     {
       Title = "About";
-      OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://xamarin.com"));
+      OpenWebSeCommand = new Command(async () => await Browser.OpenAsync("https://se.jku.at/"));
+      OpenWebJkuCommand = new Command(async () => await Browser.OpenAsync("https://www.jku.at/"));
     }
 
-    public ICommand OpenWebCommand { get; }
+    public ICommand OpenWebSeCommand { get; }
+    public ICommand OpenWebJkuCommand { get; }
   }
 }
