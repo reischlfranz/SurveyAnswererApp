@@ -78,7 +78,7 @@ namespace SurveyAnswererApp.ViewModels
 
       UpdateAvailableSurveys();
       Model.Instance.Surveys.CollectionChanged += this.SurveyCollectionChanged;
-      Model.Instance.Wrapper();
+      Model.Instance.UpdateFromRest();
 
       SurveySelectedCommand = new Command(e => ExecuteSurveySelectedCommand(e, EventArgs.Empty));
 

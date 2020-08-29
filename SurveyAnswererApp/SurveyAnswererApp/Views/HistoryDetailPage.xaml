@@ -5,9 +5,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             xmlns:q="!"
+             mc:Ignorable="d q"
              x:Class="SurveyAnswererApp.Views.HistoryDetailPage"
-             BackgroundColor="WhiteSmoke">
+             BackgroundColor="Honeydew"
+             Visual="Material">
   <NavigationPage.TitleView>
     <StackLayout Orientation="Horizontal"
                  HorizontalOptions="FillAndExpand">
@@ -21,8 +23,8 @@
       <StackLayout>
         <Label Text="{Binding Questionnaire.Title}"
                FontSize="Large" />
-        <Label Text="{Binding Questionnaire.SurveyMeta.SentDate, StringFormat=Submitted on \{0\}}" 
-               HorizontalOptions="EndAndExpand"/>
+        <Label Text="{Binding Questionnaire.SurveyMeta.SentDate, StringFormat=Submitted on \{0\}}"
+               HorizontalOptions="EndAndExpand" />
         <!-- Divider -->
         <BoxView WidthRequest="1"
                  HeightRequest="4"
@@ -34,57 +36,119 @@
         <!-- Put stuff here -->
         <Label Text="{Binding Questionnaire.Questions.Count, StringFormat=\{0\} Questions:}"
                HorizontalOptions="Start"
-               FontSize="Large"/>
+               TextDecorations="Underline"
+               FontSize="Large" />
         <!-- <Label Text="{Binding Questionnaire.Questions.Count}" /> -->
         <StackLayout VerticalOptions="FillAndExpand"
                      HorizontalOptions="FillAndExpand"
                      BindableLayout.ItemsSource="{Binding Questionnaire.Questions}">
           <BindableLayout.ItemTemplate>
             <DataTemplate>
-              <StackLayout BackgroundColor="LightGray"
-                           HorizontalOptions="FillAndExpand"
-                           Margin="10,0,10,15">
-                <StackLayout Orientation="Horizontal"
-                             Margin="10,3,10,0">
 
-                  <Label Text="{Binding QuestionText}"
-                         HorizontalOptions="StartAndExpand" 
-                         VerticalOptions="Center"
-                         />
-                  <Label Text="{Binding QuestionType, StringFormat=Type: \{0\}}"
-                         FontSize="Small"
-                         FontAttributes="Italic"
-                         TextColor="Gray"
-                         HorizontalOptions="End"
-                         VerticalOptions="Center"/>
-                </StackLayout>
-                <StackLayout BindableLayout.ItemsSource="{Binding Answers}"
-                             BackgroundColor="WhiteSmoke"
-                             Margin="10,0,0,0">
-                  <Label Text="Answers" />
-                  <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                      <StackLayout Margin="5,2,5,0">
-                        <StackLayout Orientation="Horizontal">
-                        <Label Text="{Binding AnswerText}"
-                               HorizontalOptions="StartAndExpand"
-                               TextColor="Gray" />
-                        <Label Text="{Binding Id, StringFormat=Answer ID #\{0\}}"
-                               FontSize="Small"
-                               TextColor="LightGray"
-                               HorizontalOptions="End" />
-                        </StackLayout>
-                        <Label Text="{Binding Value, StringFormat=Value: \{0\}}"
-                               TextColor="Green" />
-                      </StackLayout>
 
-                    </DataTemplate>
-                  </BindableLayout.ItemTemplate>
+              <Frame Padding="3"
+                     BackgroundColor="Ivory"
+                     Margin="0,5,0,5"
+                     HasShadow="True"
+                     CornerRadius="15"
+                     BorderColor="SlateGray">
+
+
+                <StackLayout q:BackgroundColor="LightGray"
+                             HorizontalOptions="FillAndExpand"
+                             q:Margin="0,0,0,15">
+                  <StackLayout Orientation="Horizontal"
+                               Margin="10,3,10,0">
+
+                    <Label Text="{Binding QuestionText}"
+                           HorizontalOptions="StartAndExpand"
+                           VerticalOptions="Center"
+                           LineBreakMode="WordWrap"
+                           q:WidthRequest="35"/>
+                    <StackLayout Orientation="Vertical"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="End"
+                                 WidthRequest="200">
+                      
+                    <Label Text="{Binding QuestionType, StringFormat=\{0\}}"
+                           FontSize="12"
+                           FontAttributes="Italic"
+                           TextColor="Gray"
+                           q:BackgroundColor="Aqua"
+                           LineBreakMode="TailTruncation"
+                           HorizontalTextAlignment="End"
+                           VerticalOptions="Center" />
+                    <Label Text="{Binding Id, StringFormat=Q.Id #\{0\}}"
+                           FontSize="12"
+                           TextColor="LightGray"
+                           HorizontalOptions="EndAndExpand"
+                           VerticalOptions="Center"
+                           LineBreakMode="WordWrap"
+                           HorizontalTextAlignment="End"
+                           q:BackgroundColor="Aqua"
+                           />
+                    </StackLayout>
+                  </StackLayout>
+                  <BoxView BackgroundColor="SlateGray"
+                           HeightRequest="3"
+                           Margin="0,0,0,0"
+                           HorizontalOptions="FillAndExpand" />
+                  <StackLayout BindableLayout.ItemsSource="{Binding Answers}"
+                               BackgroundColor="Transparent"
+                               Margin="0,0,0,10"
+                               Padding="0"
+                               >
+                    <Label Text="Answers" />
+                    <BindableLayout.ItemTemplate>
+                      <DataTemplate>
+                        <!-- <StackLayout Margin="5,2,5,0"> -->
+                        <Grid BackgroundColor="Transparent"
+                              Margin="10,0,10,0"
+                              Padding="0">
+                          <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                          </Grid.RowDefinitions>
+                          <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="35*" />
+                            <ColumnDefinition Width="8*" />
+                          </Grid.ColumnDefinitions>
+                          <Label Text="{Binding AnswerText}"
+                                 HorizontalOptions="StartAndExpand"
+                                 TextColor="Gray"
+                                 Grid.Row="0"
+                                 Grid.Column="0"
+                                 Grid.ColumnSpan="2" />
+                          <Label Text="{Binding Id, StringFormat=Answer ID #\{0\}}"
+                                 FontSize="12"
+                                 TextColor="LightGray"
+                                 HorizontalOptions="EndAndExpand"
+                                 VerticalOptions="Center"
+                                 LineBreakMode="WordWrap"
+                                 HorizontalTextAlignment="End"
+                                 q:BackgroundColor="Aqua"
+                                 Grid.Column="2"
+                                 Grid.Row="0"
+                                 Grid.RowSpan="2" />
+                          <Label Text="{Binding Value, StringFormat=\{0\}}"
+                                 TextColor="Green"
+                                 Grid.Row="1"
+                                 Grid.Column="1" />
+                        </Grid>
+
+                      </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                  </StackLayout>
                 </StackLayout>
-              </StackLayout>
+              </Frame>
             </DataTemplate>
           </BindableLayout.ItemTemplate>
+          <BindableLayout.ItemTemplateSelector>
+
+          </BindableLayout.ItemTemplateSelector>
         </StackLayout>
+
 
         <!-- Put stuff here -->
         <BoxView WidthRequest="1"
